@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Project 1",
+       " description": "A modern task management application.",
+        "image": "/project-1.jpg",
+        "link": "https://github.com/yourusername/project1",
+        "date": "2024-05-10",
+        "technologies": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+    },
+    {
+        "title": "Project 2",
+       " description": "An interactive portfolio website with animations.",
+        "image": "/project-2.jpg",
+        "link": "https://github.com/yourusername/project2",
+        "date": "2023-11-22",
+        "technologies": ["Framer Motion", "Next.js", "Vercel"]
+    },
+    {
+        "title": "Project 3",
+       " description": "A web service for data analysis.",
+        "image": "/project-3.jpg",
+        "link": "https://github.com/yourusername/project3",
+        "date": "2022-08-15",
+        "technologies": ["Node.js", "Express", "MongoDB"]
+    }
+]

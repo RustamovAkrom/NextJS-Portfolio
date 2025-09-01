@@ -1,0 +1,61 @@
+[
+    {
+        "image": "/personal.jpg",
+        "title": "Engineering Scalable & Adaptive Systems",
+        "description": "Building scalable web solutions with Python, Django & Next.js. Passionate about design, AI, and creating digital experiences that inspire.",
+        "links": [
+            {
+                "name": "Spotify",
+                "icon": "FaSpotify",
+                "url": "https://spotify.com",
+                "color": "from-green-400/30 to-green-600/40"
+            },
+            {
+                "name": "GitHub",
+                "icon": "FaGithub",
+                "url": "https://github.com",
+                "color": "from-gray-400/30 to-gray-700/40"
+            },
+            {
+                "name": "Instagram",
+                "icon": "FaInstagram",
+                "url": "https://instagram.com",
+                "color": "from-pink-400/30 to-purple-600/40"
+            },
+            {
+                "name": "Instagram",
+                "icon": "FaFacebook",
+                "url": "https://instagram.com",
+                "color": "from-blue-400/30 to-indigo-600/40"
+            },
+            {
+                "name": "Twitter",
+                "icon": "FaTwitter",
+                "url": "https://twitter.com",
+                "color": "from-sky-400/30 to-sky-600/40"
+            }
+        ],
+        "stats": [
+            {
+                "id": 1,
+                "name": "Project Completed",
+                "value": "35+"
+            },
+            {
+                "id": 2,
+                "name": "Years Experience",
+                "value": "1+"
+            },
+            {
+                "id": 3,
+                "name": "Happy Clients",
+                "value": "0"
+            },
+            {
+                "id": 4,
+                "name": "Client Satisfaction",
+                "value": "100%"
+            }
+        ]
+    }
+]

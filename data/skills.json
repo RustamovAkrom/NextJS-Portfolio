@@ -1,0 +1,67 @@
+[
+  {
+    "skills": [
+      {
+        "icon": "Database",
+        "title": "Backend & Databases",
+        "items": [
+          "FastAPI",
+          "Django DRF",
+          "PostgreSQL",
+          "Redis",
+          "Celery"
+        ]
+      },
+      {
+        "icon": "Settings",
+        "title": "DevOps & Tools",
+        "items": [
+          "Docker",
+          "GitHub Actions",
+          "Nginx",
+          "Grafana",
+          "RabbitMQ"
+        ]
+      },
+      {
+        "icon": "Code",
+        "title": "Frontend Frameworks",
+        "items": [
+          "Next.js",
+          "React",
+          "Vue.js",
+          "Nuxt.js"
+        ]
+      },
+      {
+        "icon": "Palette",
+        "title": "Design & Styling",
+        "items": [
+          "Tailwind CSS",
+          "Figma",
+          "Framer Motion",
+          "Canva"
+        ]
+      }
+    ],
+    "progressSkills": [
+      { "name": "Python", "level": 100 },
+      { "name": "Django", "level": 100 },
+      { "name": "DRF", "level": 100 },
+      { "name": "Flask", "level": 90 },
+      { "name": "FastAPI", "level": 85 },
+      { "name": "Telebot", "level": 46 },
+      { "name": "Aiogram", "level": 96 },
+      { "name": "Git", "level": 100 },
+      { "name": "Linux", "level": 79 },
+      { "name": "PostgreSQL", "level": 95 },
+      { "name": "Next.JS", "level": 85 },
+      { "name": "React.JS", "level": 80 },
+      { "name": "Node.JS", "level": 82 },
+      { "name": "Tailwind CSS", "level": 80 },
+      { "name": "CSS", "level": 45 },
+      { "name": "NGINX", "level": 87 },
+      { "name": "GraphQL", "level": 58 }
+    ]
+  }
+]

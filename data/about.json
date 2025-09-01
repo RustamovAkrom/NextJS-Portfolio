@@ -1,0 +1,90 @@
+[
+    {
+        "title": "About Us",
+        "content": "I’m passionate about creating seamless digital experiences. With strong knowledge in backend, frontend, and design tools, I strive to blend creativity with performance-driven code.",
+        "image": "/about2.jpg",
+        "alt": "A person working on a laptop with code on the screen",
+        "links": [
+            {
+                "name": "Open roles",
+                "href": "#"
+            },
+            {
+                "name": "Internship program",
+                "href": "#"
+            },
+            {
+                "name": "Our values",
+                "href": "#"
+            },
+            {
+                "name": "Meet our leadership",
+                "href": "#"
+            }
+        ],
+        "stats": [
+            {
+                "id": 1,
+                "name": "Project Completed",
+                "value": "45+"
+            },
+            {
+                "id": 2,
+                "name": "Years Experience",
+                "value": "1+"
+            },
+            {
+                "id": 3,
+                "name": "Happy Clients",
+                "value": "0"
+            },
+            {
+                "id": 4,
+                "name": "Client Satisfaction",
+                "value": "100%"
+            }
+        ],
+        "filters": [
+            "all",
+            "work",
+            "education"
+        ],
+        "timeline": [
+            {
+                "type": "work",
+                "role": "Backend Engineer",
+                "company": "1Game LLC",
+                "period": "2025-jun - present",
+                "description": "Building and optimizing backend services for online gaming platforms. Worked with Python, FastAPI, Redis, PostgreSQL, and WebSockets to ensure scalability and reliability."
+            },
+            {
+                "type": "work",
+                "role": "Backend Developer",
+                "company": "Felix-ITs LLC",
+                "period": "2024-apr - 2025-jun",
+                "description": "Developing and maintaining scalable APIs, database optimization, and business logic integration. Worked with Python, Django/DRF/FastAPI, PostgreSQL, Redis, and Celery."
+            },
+            {
+                "type": "education",
+                "role": "Backend Developer Degree",
+                "company": "Najot Ta'lim",
+                "period": "2023-aug - 2024-mar",
+                "description": "Specialized in backend development with Python, Django, REST API design, databases, and deployment practices."
+            },
+            {
+                "type": "education",
+                "role": "Backend Developer Degree",
+                "company": "Najot Ta'lim",
+                "period": "2023-aug - 2024-mar",
+                "description": "Specialized in backend development with Python, Django, REST API design, databases, and deployment practices."
+            },
+            {
+                "type": "education",
+                "role": "Economics Student, Baccalaureate Degree",
+                "company": "TIIAME National Research University",
+                "period": "2020-oct - 2024-jun",
+                "description": "Focused on economics, finance, and analytical methods for decision-making in business and policy."
+            }
+        ]
+    }
+]
