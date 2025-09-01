@@ -9,10 +9,8 @@ export default function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
             <Link 
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
-            href="#">
+            href="/">
                 <Code2Icon className="w-10 h-10 text-gray-900 dark:text-white animate-pulse" />
-                {/* <img src="/globe.svg" alt="Globe Icon" className="w-10 h-10 animate-pulse animate" /> */}
-
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Portfolio</span>
 
             </Link>
@@ -27,14 +25,14 @@ export default function Footer() {
                 <li>
                     <Link
                     className="hover:underline me-4 md:me-6"
-                    href="#">
+                    href="https://rustamovakrom.github.io/NextJS-Portfolio/docs/privacy_policy.html">
                     Privacy Policy
                     </Link>
                 </li>
                 <li>
                     <Link
                     className="hover:underline me-4 md:me-6"
-                    href="#">
+                    href="https://rustamovakrom.github.io/NextJS-Portfolio/docs/licencing.html">
                     Licensing
                     </Link>
                 </li>
