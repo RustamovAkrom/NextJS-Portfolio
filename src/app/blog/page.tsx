@@ -145,6 +145,7 @@ export default function Posts() {
                       alt={post.author.name}
                       width={320}
                       height={320}
+                      priority
                     />
                     <div>
                       <p className="font-medium text-gray-900 dark:text-gray-100">

@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   // output: "export",
     images: {
-    domains: ["i.pinimg.com"],
+    domains: ["akrom-omega.vercel.app"],
     unoptimized: true,
   },
 };
