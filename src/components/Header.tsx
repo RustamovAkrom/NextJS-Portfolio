@@ -7,7 +7,6 @@ import {
 } from '@headlessui/react'
 import ThemeToggle from './ThemeToggle'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Code2Icon } from 'lucide-react'
 
 export default function Header() {
