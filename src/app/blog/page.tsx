@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type SortKey = "title" | "category" | "date";
 
@@ -138,10 +139,12 @@ export default function Posts() {
                     {post.description}
                   </p>
                   <div className="flex items-center gap-x-2 mt-4">
-                    <img
-                      alt={post.author.name}
-                      src={post.author.imageUrl}
+                    <Image
                       className="size-8 rounded-full border border-gray-300 dark:border-gray-700"
+                      src={post.author.imageUrl}
+                      alt={post.author.name}
+                      width={320}
+                      height={320}
                     />
                     <div>
                       <p className="font-medium text-gray-900 dark:text-gray-100">

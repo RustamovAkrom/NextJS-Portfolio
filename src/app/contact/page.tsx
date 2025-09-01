@@ -202,7 +202,7 @@ export function SendMessageForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          I'd love to hear from you! Just fill out this form.
+          Id love to hear from you! Just fill out this form.
         </motion.p>
       </div>
 

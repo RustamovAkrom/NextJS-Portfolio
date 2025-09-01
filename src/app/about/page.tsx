@@ -1,65 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Briefcase, GraduationCap } from "lucide-react";
 import { useEffect, useState } from "react";
-
-
-// const links = [
-//   { name: "Open roles", href: "#" },
-//   { name: "Internship program", href: "#" },
-//   { name: "Our values", href: "#" },
-//   { name: "Meet our leadership", href: "#" },
-// ];
-
-// const stats = [
-//   { id: 1, name: "Project Completed", value: "35+" },
-//   { id: 2, name: "Years Experience", value: "1+" },
-//   { id: 3, name: "Happy Clients", value: "0" },
-//   { id: 4, name: "Client Satisfaction", value: "100%" },
-// ];
-
-// const filters = ["all", "work", "education"];
-
-// const timeline = [
-//   {
-//     type: "work",
-//     role: "Backend Engineer",
-//     company: "1Game LLC",
-//     period: "2025-jun - present",
-//     description:
-//       "Building and optimizing backend services for online gaming platforms. Worked with Python, FastAPI, Redis, PostgreSQL, and WebSockets to ensure scalability and reliability.",
-//     icon: <Briefcase className="h-6 w-6 text-primary" />,
-//   },
-//   {
-//     type: "work",
-//     role: "Backend Developer",
-//     company: "Felix-ITs LLC",
-//     period: "2024-apr - 2025-jun",
-//     description:
-//       "Developing and maintaining scalable APIs, database optimization, and business logic integration. Worked with Python, Django/DRF/FastAPI, PostgreSQL, Redis, and Celery.",
-//     icon: <Briefcase className="h-6 w-6 text-primary" />,
-//   },
-//   {
-//     type: "education",
-//     role: "Backend Developer Degree",
-//     company: "Najot Ta'lim",
-//     period: "2023-aug - 2024-mar",
-//     description:
-//       "Specialized in backend development with Python, Django, REST API design, databases, and deployment practices.",
-//     icon: <GraduationCap className="h-6 w-6 text-primary" />,
-//   },
-//   {
-//     type: "education",
-//     role: "Economics Student, Baccalaureate Degree",
-//     company: "TIIAME National Research University",
-//     period: "2020-oct - 2024-jun",
-//     description:
-//       "Focused on economics, finance, and analytical methods for decision-making in business and policy.",
-//     icon: <GraduationCap className="h-6 w-6 text-primary" />,
-//   },
-// ];
-
 
 function MyJourneySection({ 
   timeline, 

@@ -21,7 +21,7 @@ interface SkillsData {
   progressSkills: ProgressSkill[];
 }
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string,  React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Database: Database,
   Settings: Settings,
   Code: Code,

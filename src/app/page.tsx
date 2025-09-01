@@ -1,58 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin, FaTelegram, FaFacebook, FaSpotify, FaInstagram, FaSpider, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollDownButton from "@/components/ScrollDownButton";
-import { JSX } from "react";
-
-
-const IconMap: Record<string, JSX.Element> = {
-  FaGithub: <FaGithub className="w-8 h-8" />,
-  FaLinkedin: <FaLinkedin className="w-8 h-8" />,
-  FaTelegram: <FaTelegram className="w-8 h-8" />,
-  FaFacebook: <FaFacebook className="w-8 h-8" />,
-  FaSpotify: <FaSpotify className="w-8 h-8" />,
-  FaInstagram: <FaInstagram className="w-8 h-8" />,
-  FaSpider: <FaSpider className="w-8 h-8" />,
-  FaTwitter: <FaTwitter className="w-8 h-8" />,
-};
-
-
-const stats = [
-  { id: 1, name: 'Project Completed', value: '35+' },
-  { id: 2, name: 'Years Experience', value: '1+' },
-  { id: 3, name: 'Happy Clients', value: '0' },
-  { id: 4, name: 'Client Satisfaction', value: '100%' },
-]
-const links = [
-  {
-    name: "Spotify",
-    icon: <FaSpotify className="w-8 h-8" />,
-    url: "https://spotify.com",
-    color: "from-green-400/30 to-green-600/40",
-  },
-  {
-    name: "GitHub",
-    icon: <FaGithub className="w-8 h-8" />,
-    url: "https://github.com",
-    color: "from-gray-400/30 to-gray-700/40",
-  },
-  {
-    name: "Instagram",
-    icon: <FaInstagram className="w-8 h-8" />,
-    url: "https://instagram.com",
-    color: "from-pink-400/30 to-purple-600/40",
-  },
-  {
-    name: "Twitter",
-    icon: <FaTwitter className="w-8 h-8" />,
-    url: "https://twitter.com",
-    color: "from-sky-400/30 to-sky-600/40",
-  },
-];
 
 
 
