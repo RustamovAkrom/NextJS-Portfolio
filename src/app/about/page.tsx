@@ -171,7 +171,9 @@ export default function AboutPage() {
               <Image
                 src={content.image}
                 alt={content.alt}
-                fill
+                width={320}
+                height={320}
+                priority
                 className="object-cover"
               />
             </motion.div>
