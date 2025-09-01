@@ -16,7 +16,7 @@ export default function Header() {
 
     <header
       className="fixed top-0 left-0 w-full z-50 
-    bg-white/70 dark:bg-gray-900/70 
+    bg-white/70 dark:bg-gray-900/900 
     backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:border-gray-800/50
     transition-colors duration-300"
     >
@@ -29,16 +29,7 @@ export default function Header() {
             <span className="text-1xl font-bold text-gray-900 dark:text-white tracking-wide">
               Akrom.R
             </span>
-            {/* Лого */}
-            {/* <Image
-              src="/globe.svg"
-              width={45}
-              height={45}
-              alt="Portfolio Logo"
-              className="h-9 w-9 animate-pulse animate"
-            /> */}
             <Code2Icon className="w-10 h-10 text-gray-900 dark:text-white animate-pulse" />
-            {/* <img src="/code.png" alt="Globe Icon" className="w-10 h-10 animate-pulse animate" /> */}
 
             {/* Текст рядом */}
             <span className="text-1xl font-bold text-gray-900 dark:text-white tracking-wide">
@@ -62,7 +53,6 @@ export default function Header() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" data-slot="icon" aria-hidden="true" className="size-6">
               <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            {/* <Bars3Icon aria-hidden="true" className="size-6" /> */}
           </button>
         </div>
 
@@ -86,17 +76,17 @@ export default function Header() {
             href="/projects"
             prefetch={true}
             className="text-sm font-semibold text-gray-800 dark:text-gray-100 className="
-          >Projects</Link>
+          >Portfolio</Link>
           <Link
             href="/contact"
             prefetch={true}
             className="text-sm font-semibold text-gray-800 dark:text-gray-100 className="
           >Contact</Link>
-          <Link
+          {/* <Link
             href="/blog"
             prefetch={true}
             className="text-sm font-semibold text-gray-800 dark:text-gray-100 className="
-          >Blog</Link>
+          >Blog</Link> */}
         </div>
 
         {/* Theme Button */}
@@ -171,17 +161,17 @@ export default function Header() {
                   prefetch={true}
                   className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold 
                 text-gray-800 dark:text-white 
-                hover:bg-gray-100/60 dark:hover:bg-white/5 transition'>Projects</Link>
+                hover:bg-gray-100/60 dark:hover:bg-white/5 transition'>Portfolio</Link>
                 <Link href="/contact"
                   prefetch={true}
                   className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold 
                 text-gray-800 dark:text-white 
                 hover:bg-gray-100/60 dark:hover:bg-white/5 transition'>Contact</Link>
-                <Link href="/blog"
+                {/* <Link href="/blog"
                   prefetch={true}
                   className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold 
                 text-gray-800 dark:text-white 
-                hover:bg-gray-100/60 dark:hover:bg-white/5 transition'>Blog</Link>
+                hover:bg-gray-100/60 dark:hover:bg-white/5 transition'>Blog</Link> */}
               </div>
 
               <div className="py-6">
