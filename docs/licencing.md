@@ -13,6 +13,6 @@ You are **not allowed** to:
 - Claim any part of this portfolio as your own work.
 - Distribute content in a way that violates copyright laws.
 
-For permission requests, commercial use inquiries, or questions regarding licensing, please contact me at **[your email address]**.
+For permission requests, commercial use inquiries, or questions regarding licensing, please contact me at **[akromjonrustamov56@gmail.com]**.
 
 > ⚠️ This license applies only to the portfolio itself. Third-party libraries or resources included in the projects may have their own separate licenses.
