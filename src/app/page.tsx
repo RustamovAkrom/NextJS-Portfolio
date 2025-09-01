@@ -6,10 +6,29 @@ import Link from "next/link";
 import Image from "next/image";
 import ScrollDownButton from "@/components/ScrollDownButton";
 
+interface Link {
+  name: string;
+  url: string;
+  icon: React.ReactNode;
+  color: string;
+}
 
+interface Stat {
+  id: number;
+  name: string;
+  value: number | string;
+}
+
+interface HomeContent {
+  title: string;
+  description: string;
+  image: string;
+  links: Link[];
+  stats: Stat[];
+}
 
 export default function Home() {
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<HomeContent[] | null>(null);
 
   useEffect(() => {
     fetch("/api/home") // твой API
@@ -130,7 +149,7 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {content.links.map((link: any, idx: number) => (
+            {content.links.map((link: Link, idx: number) => (
               <motion.a
                 key={idx}
                 href={link.url}
@@ -164,7 +183,7 @@ export default function Home() {
           </h2>
 
           <dl className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 text-center">
-            {content.stats.map((stat: any, idx: number) => (
+            {content.stats.map((stat: Stat, idx: number) => (
               <motion.div
                 key={stat.id}
                 initial={{ opacity: 0, y: 40 }}

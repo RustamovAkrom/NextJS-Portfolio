@@ -3,11 +3,41 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+interface Link {
+  href: string;
+  name: string;
+}
+
+interface Stat {
+  id: number;
+  name: string;
+  value: number | string;
+}
+
+interface TimelineItem {
+  id: number;
+  type: string;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+interface AboutContent {
+  image: string;
+  alt: string;
+  links: Link[];
+  stats: Stat[];
+  timeline: TimelineItem[];
+  filters: string[];
+}
+
 function MyJourneySection({ 
   timeline, 
   filters 
 }: { 
-  timeline: any[]; 
+  timeline: TimelineItem[]; 
   filters: string[];
 }) {
   const [filter, setFilter] = useState("all");
@@ -102,7 +132,7 @@ function MyJourneySection({
 }
 
 export default function AboutPage() {
-  const [data, setData] = useState<any | null>(null);
+  const [data, setData] = useState<AboutContent[] | null>(null);
 
   useEffect(() => {
     fetch("/api/about")
@@ -178,7 +208,7 @@ export default function AboutPage() {
   
             {/* Links */}
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
-              {content.links.map((link: any, idx: number) => (
+              {content.links.map((link: Link, idx: number) => (
                 <motion.a
                   key={idx}
                   href={link.href}
@@ -197,7 +227,7 @@ export default function AboutPage() {
   
             {/* Stats */}
             <dl className="grid grid-cols-2 gap-8 text-center">
-              {content.stats.map((stat: any) => (
+              {content.stats.map((stat: Stat) => (
                 <motion.div
                   key={stat.id}
                   initial={{ opacity: 0, y: 20 }}
