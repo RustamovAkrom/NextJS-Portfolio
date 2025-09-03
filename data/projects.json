@@ -1,26 +1,72 @@
 [
     {
-        "title": "Project 1",
-       " description": "A modern task management application.",
-        "image": "/project-1.jpg",
-        "link": "https://github.com/yourusername/project1",
-        "date": "2024-05-10",
-        "technologies": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+        "title": "Next.JS Portfolio",
+        "description": "Personal portfolio maked with Next.JS integration with dark and light modes, white beauteful style and components.",
+        "image": "/projects/project_1/home-dark.png",
+        "slug": "nextjs-portfolio",
+        "github": "https://github.com/RustamovAkrom/NextJS-Portfolio",
+        "deploy": "https://akrom-omega.vercel.app/",
+        "date": "2025-09-02",
+        "technologies": ["React", "TypeScript", "Next.js", "TailwindCSS"],
+        "screenshots": [
+            {"src": "/projects/project_1/home-dark.png"},
+            {"src": "/projects/project_1/home-light.png"},
+            {"src": "/projects/project_1/about-dark.png"},
+            {"src": "/projects/project_1/about-light.png"},
+            {"src": "/projects/project_1/contact-dark.png"},
+            {"src": "/projects/project_1/contact-light.png"},
+            {"src": "/projects/project_1/skills-dark.png"},
+            {"src": "/projects/project_1/skills-light.png"}
+        ]
     },
     {
-        "title": "Project 2",
-       " description": "An interactive portfolio website with animations.",
-        "image": "/project-2.jpg",
-        "link": "https://github.com/yourusername/project2",
-        "date": "2023-11-22",
-        "technologies": ["Framer Motion", "Next.js", "Vercel"]
-    },
-    {
-        "title": "Project 3",
-       " description": "A web service for data analysis.",
-        "image": "/project-3.jpg",
-        "link": "https://github.com/yourusername/project3",
-        "date": "2022-08-15",
-        "technologies": ["Node.js", "Express", "MongoDB"]
-    }
+    "title": "Voice Assistant Jarvis",
+    "description": "Интеллектуальный голосовой ассистент, созданный на Python. Поддерживает распознавание и синтез речи, управление системой, работу с интернетом и интеграцию с различными библиотеками.",
+    "longDescription": "Этот проект представляет собой интеллектуального голосового ассистента, разработанного на Python. Ассистент способен распознавать и синтезировать речь, что позволяет ему взаимодействовать с пользователем на естественном языке. Он может выполнять различные задачи, включая управление системой (открытие приложений, управление файлами), работу с интернетом (поиск информации, отправка сообщений) и интеграцию с различными библиотеками для расширения своих возможностей. Проект использует такие библиотеки, как SpeechRecognition для распознавания речи, Pyttsx3 для синтеза речи, а также Requests и BeautifulSoup4 для работы с веб-контентом. Ассистент также поддерживает функции управления звуком и мониторинга системы с помощью PyCaw и Psutil. Этот проект демонстрирует потенциал использования Python для создания сложных и полезных приложений в области искусственного интеллекта и обработки естественного языка.",
+    "image": "/projects/project_2/banner.png",
+    "slug": "voice-assistant-jarvis",
+    "github": "https://github.com/RustamovAkrom/Jarvis", 
+    "deploy": null,
+    "date": "2025-09-02",
+    "technologies": [
+      "Python",
+      "SpeechRecognition",
+      "Vosk",
+      "Pyttsx3",
+      "PyAutoGUI",
+      "Requests",
+      "BeautifulSoup4",
+      "WebSockets",
+      "Wikipedia",
+      "PyCaw",
+      "Psutil"
+    ],
+    "screenshots": [
+      { "src": "/projects/project_2/banner.png", "alt": "Jarvis Banner" },
+      { "src": "/projects/project_2/folder-structure.png", "alt": "Структура проекта" },
+      { "src": "/projects/project_2/running.png", "alt": "Демонстрация распознавания речи" }
+    ]
+  },
+  {
+    "title": "Blog Web App",
+    "description": "Full-stack blog web application built with Django, and Bootstrap for the frontend, and other safety dependencies with PostgreSQL and Sqlite3 for the backend. Features include user authentication, CRUD operations for posts, and a responsive design.",
+    "longDescription": "This project is a comprehensive full-stack blog web application developed using Django for the backend and Bootstrap for the frontend. The application is designed to provide a seamless user experience with features such as user authentication, allowing users to register, log in, and manage their profiles securely. It supports CRUD (Create, Read, Update, Delete) operations for blog posts, enabling users to create new posts, view existing ones, edit their content, and delete them as needed. The application is built with a responsive design using Bootstrap, ensuring it works well on various devices, from desktops to mobile phones. For data storage, the application utilizes PostgreSQL as the primary database and SQLite3 for development purposes. Additionally, the project incorporates several security-focused dependencies to enhance the safety and integrity of user data and interactions. Overall, this blog web application serves as a robust platform for users to share their thoughts and engage with content in a secure and user-friendly environment.",
+    "image": "/projects/project_3/home.png",
+    "slug": "blog-web-app",
+    "github": "https://github.com/RustamovAkrom/Blog-Web-APP/",
+    "deploy": null,
+    "date": "2024-06-12",
+    "technologies": ["Python", "Django", "Bootstrap", "PostgreSQL", "SQLite3", "rest_framework", "htmx-django", "rs256-jwt-auth", "seo-optimizer", "restframework-simple-jwt"],
+    "screenshots": [
+        {"src": "/projects/project_3/home.png"},
+        {"src": "/projects/project_3/login.png"},
+        {"src": "/projects/project_3/register.png"},
+        {"src": "/projects/project_3/post-detail.png"},
+        {"src": "/projects/project_3/working.png"},
+        {"src": "/projects/project_3/admin-home.png"},
+        {"src": "/projects/project_3/admin-models.png"},
+        {"src": "/projects/project_3/admin-posts.png"},
+        {"src": "/projects/project_3/admin-update.png"}
+    ]
+  }
 ]
