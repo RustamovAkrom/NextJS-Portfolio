@@ -265,3 +265,19 @@
   }
 }
 
+/* globals.css */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/iter/static/inter_18pt-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/iter/static/inter_18pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/iter/static/inter_18pt-Black.ttf") format("truetype");
+  font-weight: 900;
+}
