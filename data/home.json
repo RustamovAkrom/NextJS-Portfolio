@@ -3,6 +3,7 @@
         "image": "/about5.jpg",
         "title": "Engineering Scalable & Adaptive Systems",
         "description": "Building scalable web solutions with Python, Django & Next.js. Passionate about design, AI, and creating digital experiences that inspire.",
+        "resume": "/resumes/resume-1.pdf",
         "links": [
             {
                 "name": "LinkedIn",
