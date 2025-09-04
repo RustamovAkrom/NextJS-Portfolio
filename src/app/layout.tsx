@@ -8,9 +8,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundAnimation from "@/components/BagroundAnimation";
-import localFont from "next/font/local";
-import Link
- from "next/link";
+
 
 export const metadata = {
   title: "Portfolio - Akrom Rustamov",
@@ -43,33 +41,12 @@ export const metadata = {
   },
 };
 
-
-const myFont = localFont({
-  src: [
-    {
-      path: "./fonts/static/inter_18pt-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/static/inter_18pt-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/static/inter_18pt-Black.ttf",
-      weight: "900",
-      style: "normal",
-    },
-  ],
-  variable: "--font-inter",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["greek"], display: "swap" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${myFont.variable}`}>
+      <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <BackgroundAnimation>
           <Header />
