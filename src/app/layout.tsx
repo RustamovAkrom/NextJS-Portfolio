@@ -9,23 +9,21 @@ import Footer from "@/components/Footer";
 import BackgroundAnimation
  from "@/components/BagroundAnimation";
 
-export const metadata: Metadata = {
-  title: "Portfolio - Akrom Rustamov",
-  description: "Akrom Rustamov - Next.JS application",
-  keywords: ["Akrom Rustamov", "Portfolio", "Next.JS", "React", "JavaScript", "TypeScript", "Web Developer"],
-  authors: [{ name: "Akrom Rustamov", url: "https://akrom-omega.vercel.app" }],
-  creator: "Akrom Rustamov",
+export const metadata = {
+  title: "Jarvis Project",
+  description: "Smart assistant system project by Akrom.",
+  metadataBase: new URL("https://akrom-omega.vercel.app/"),
   openGraph: {
-    title: "Portfolio - Akrom Rustamov",
-    description: "Akrom Rustamov - Next.JS application",
-    url: "https://akrom-omega.vercel.app",
-    siteName: "Akrom Rustamov Portfolio",
+    title: "Jarvis Project",
+    description: "Smart assistant system project by Akrom.",
+    url: "https://akrom-omega.vercel.app/",
+    siteName: "Jarvis Project",
     images: [
       {
-        url: "/image1200-630.png",
+        url: "/banner.png", // 👈 загрузи в public/banner.png
         width: 1200,
         height: 630,
-        alt: "Akrom Rustamov Portfolio",
+        alt: "Jarvis Project Preview",
       },
     ],
     locale: "en_US",
@@ -33,38 +31,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio - Akrom Rustamov",
-    description: "Akrom Rustamov - Next.JS application",
-    images: ["https://akrom-omega.vercel.app/image1200-600.png"],
-    creator: "@akromrustamov",
-  },
-  icons: {
-    icon: "/web/favicon.ico",
-    shortcut: "/web/icons8-96.png",
-    apple: "/web/icons8-120.png",
-  },
-  manifest: "/site.webmanifest",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    title: "Jarvis Project",
+    description: "Smart assistant system project by Akrom.",
+    images: ["/banner.png"],
   },
 };
+
 
 const inter = Inter({ subsets: ["greek"], display: "swap" });
 
