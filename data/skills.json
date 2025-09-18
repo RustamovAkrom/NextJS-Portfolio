@@ -18,9 +18,7 @@
         "items": [
           "Docker",
           "GitHub Actions",
-          "Nginx",
-          "Grafana",
-          "RabbitMQ"
+          "Nginx"
         ]
       },
       {
@@ -28,9 +26,7 @@
         "title": "Frontend Frameworks",
         "items": [
           "Next.js",
-          "React",
-          "Vue.js",
-          "Nuxt.js"
+          "React"
         ]
       },
       {
@@ -38,6 +34,7 @@
         "title": "Design & Styling",
         "items": [
           "Tailwind CSS",
+          "Bootstrap",
           "Figma",
           "Framer Motion",
           "Canva"

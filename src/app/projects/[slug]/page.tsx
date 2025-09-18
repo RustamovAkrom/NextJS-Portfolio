@@ -26,7 +26,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔥 Lightbox state
+  // Lightbox
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
   });
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 transition-colors mt-20">
+    <main className="min-h-screen mt-20">
       {/* Back button */}
       <div className="max-w-5xl mx-auto px-4 pt-6">
         <Link
@@ -119,7 +119,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
                 <Link
                   href={project.github}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/80 hover:bg-gray-900 dark:bg-gray-100/10 dark:hover:bg-gray-100/20 text-white dark:text-gray-100 text-sm font-medium shadow-sm transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-500/90 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-sm font-medium shadow-md transition-transform hover:scale-105"
                 >
                   <Github className="h-4 w-4" /> GitHub
                 </Link>
@@ -128,7 +128,7 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
                 <Link
                   href={project.deploy}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-700/80 hover:bg-gray-700 dark:bg-gray-100/10 dark:hover:bg-gray-100/20 text-white dark:text-gray-100 text-sm font-medium shadow-sm transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-700/80 hover:bg-gray-800 dark:bg-gray-100/10 dark:hover:bg-gray-100/20 text-white dark:text-gray-100 text-sm font-medium shadow-md transition-transform hover:scale-105"
                 >
                   <Globe className="h-4 w-4" /> Live Demo
                 </Link>
@@ -162,65 +162,72 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-{/* Lightbox */}
-<AnimatePresence>
-  {lightboxIndex !== null && project.screenshots && (
-    <motion.div
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="relative max-w-4xl w-full">
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={() => setLightboxIndex(null)}
-          className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-50"
-        >
-          <X className="h-5 w-5" />
-        </button>
-
-        {/* Image */}
-        {lightboxIndex !== null && (
-          <div className="relative w-full h-[70vh] rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src={project.screenshots[lightboxIndex].src}
-              alt={project.screenshots[lightboxIndex].alt || "Screenshot"}
-              fill
-              className="object-contain"
-            />
-          </div>
-        )}
-
-        {/* Navigation arrows */}
-        {lightboxIndex > 0 && (
-          <button
-            type="button"
-            onClick={() =>
-              setLightboxIndex((prev) => (prev !== null ? prev - 1 : prev))
-            }
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && project.screenshots && (
+          <motion.div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxIndex(null)} // 👈 закрытие по клику на фон
           >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-        )}
-        {lightboxIndex < project.screenshots.length - 1 && (
-          <button
-            type="button"
-            onClick={() =>
-              setLightboxIndex((prev) => (prev !== null ? prev + 1 : prev))
-            }
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-        )}
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()} // чтобы клик по картинке не закрывал
+            >
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={() => setLightboxIndex(null)}
+                className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-50"
+              >
+                <X className="h-5 w-5" />
+              </button>
 
+              {/* Image */}
+              {lightboxIndex !== null && (
+                <div className="relative w-full h-[70vh] rounded-lg overflow-hidden shadow-lg">
+                  <Image
+                    src={project.screenshots[lightboxIndex].src}
+                    alt={project.screenshots[lightboxIndex].alt || "Screenshot"}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              )}
+
+              {/* Navigation arrows */}
+              {lightboxIndex > 0 && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxIndex((prev) => (prev !== null ? prev - 1 : prev))
+                  }
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+              )}
+              {lightboxIndex < project.screenshots.length - 1 && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxIndex((prev) => (prev !== null ? prev + 1 : prev))
+                  }
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Description */}
       <section className="max-w-5xl mx-auto px-4 pb-20">
@@ -232,10 +239,16 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
           className="rounded-xl border border-gray-200/50 dark:border-gray-700/50 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md shadow-md p-6 md:p-8"
         >
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Overview</h2>
-          <p className="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed"
+          >
             {project.longDescription ||
               "This project highlights a modern, clean design with responsive layout, light/dark mode support, and elegant transitions."}
-          </p>
+          </motion.p>
         </motion.div>
       </section>
     </main>

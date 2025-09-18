@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Web Development",
+    "description": "Building modern, scalable and responsive websites using React, Next.js and Django.",
+    "icon": "Code",
+    "features": [
+      "Responsive design",
+      "Fast performance",
+      "SEO optimization"
+    ]
+  },
+  {
+    "title": "Backend Development",
+    "description": "Designing robust APIs and server-side applications with Python and Django.",
+    "icon": "Server",
+    "features": [
+      "REST & GraphQL APIs",
+      "Authentication & security",
+      "Database optimization"
+    ]
+  },
+  {
+    "title": "AI & Chatbots",
+    "description": "Creating intelligent chatbots and AI integrations for businesses and personal projects.",
+    "icon": "Bot",
+    "features": [
+      "Natural language processing",
+      "Customizable workflows",
+      "Multi-platform integration"
+    ]
+  },
+  {
+    "title": "UI/UX Design",
+    "description": "Designing intuitive user experiences with a focus on simplicity and usability.",
+    "icon": "Palette",
+    "features": [
+      "Wireframing & prototyping",
+      "User-centered design",
+      "Interactive components"
+    ]
+  }
+]
