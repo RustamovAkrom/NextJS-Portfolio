@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Sparkles } from "lucide-react";
-import * as Icons from "lucide-react";
+import * as  Icons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 
 interface Service {
   title: string;
   description: string;
-  icon: string;
+  icon: keyof typeof Icons;
   features: string[];
 }
 
@@ -53,7 +55,7 @@ export default function ServicesPage() {
       {/* Список сервисов */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
         {services.map((service, index) => {
-          const Icon = (Icons as any)[service.icon] || Sparkles;
+          const Icon = (Icons[service.icon] ?? Sparkles) as LucideIcon;
 
           return (
             <motion.div
