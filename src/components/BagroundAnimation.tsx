@@ -1,5 +1,3 @@
-
-
 // components/BackgroundAnimation.tsx
 "use client";
 
@@ -15,7 +13,7 @@ export default function BackgroundAnimation({ children }: { children: React.Reac
     if (!ctx) return;
 
     let stars: { x: number; y: number; vx: number; vy: number; radius: number }[] = [];
-    const numStars = 120;
+    const numStars = 90;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -23,35 +21,25 @@ export default function BackgroundAnimation({ children }: { children: React.Reac
       stars = Array.from({ length: numStars }).map(() => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.3 + 0.3,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 1.2 + 0.2,
       }));
     };
     resize();
     window.addEventListener("resize", resize);
 
-    let mouseX = -1000;
-    let mouseY = -1000;
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-
     const animate = () => {
-      if (!ctx) return;
-
       const isDark = document.documentElement.classList.contains("dark");
 
-      // Фон градиентный
+      // Градиентный фон
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
       if (isDark) {
-        gradient.addColorStop(0, "#050505");
-        gradient.addColorStop(1, "#111111");
+        gradient.addColorStop(0, "#0a0a0f");
+        gradient.addColorStop(1, "#1a1a2e");
       } else {
-        gradient.addColorStop(0, "#f0f4f8");
-        gradient.addColorStop(1, "#d0e7ff");
+        gradient.addColorStop(0, "#f5f9ff");
+        gradient.addColorStop(1, "#dbeafe");
       }
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -65,46 +53,20 @@ export default function BackgroundAnimation({ children }: { children: React.Reac
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.7)";
+        ctx.fillStyle = isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.4)";
         ctx.fill();
       });
 
-      // Линии между звёздами
-      for (let i = 0; i < stars.length; i++) {
-        for (let j = i + 1; j < stars.length; j++) {
-          const dx = stars[i].x - stars[j].x;
-          const dy = stars[i].y - stars[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            let opacity = 1 - dist / 120;
-
-            const mx = stars[i].x - mouseX;
-            const my = stars[i].y - mouseY;
-            const mouseDist = Math.sqrt(mx * mx + my * my);
-            if (mouseDist < 150) opacity += 0.3;
-
-            ctx.beginPath();
-            ctx.moveTo(stars[i].x, stars[i].y);
-            ctx.lineTo(stars[j].x, stars[j].y);
-            ctx.strokeStyle = isDark
-              ? `rgba(255,255,255,${opacity * 0.5})`
-              : `rgba(0,0,0,${opacity * 0.5})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
+      // Лёгкий blur-слой поверх (эффект стекла)
+      ctx.fillStyle = isDark ? "rgba(20,20,40,0.2)" : "rgba(255,255,255,0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       requestAnimationFrame(animate);
     };
 
     animate();
 
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
   return (
@@ -114,7 +76,6 @@ export default function BackgroundAnimation({ children }: { children: React.Reac
     </div>
   );
 }
-
 
 // // components/BackgroundAnimation.tsx
 // "use client";
