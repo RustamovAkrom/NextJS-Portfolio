@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { AboutContent, TimelineItem, Link, Stat } from "@/types/about";
+import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
 
 
 function MyJourneySection({
   timeline,
   filters,
 }: {
-  timeline: TimelineItem[];
+  timeline: TimelineItemType[];
   filters: string[];
 }) {
   const [filter, setFilter] = useState("all");
@@ -90,7 +90,7 @@ function MyJourneySection({
 }
 
 export default function AboutPage() {
-  const [data, setData] = useState<AboutContent[] | null>(null);
+  const [data, setData] = useState<AboutContentType[] | null>(null);
 
   useEffect(() => {
     fetch("/api/about")
@@ -105,7 +105,8 @@ export default function AboutPage() {
   const content = data[0];
 
   return (
-    <div>
+    <div className="container">
+
       {/* Hero section */}
       <section className="relative py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
@@ -148,7 +149,7 @@ export default function AboutPage() {
 
             {/* Links */}
             <div className="grid sm:grid-cols-2 gap-4 mb-10">
-              {content.links.map((link: Link, idx: number) => (
+              {content.links.map((link: LinkType, idx: number) => (
                 <motion.a
                   key={idx}
                   href={link.href}
@@ -165,7 +166,7 @@ export default function AboutPage() {
 
             {/* Stats */}
             <dl className="grid grid-cols-2 gap-6 text-center">
-              {content.stats.map((stat: Stat) => (
+              {content.stats.map((stat: StatType) => (
                 <motion.div
                   key={stat.id}
                   initial={{ opacity: 0, y: 20 }}

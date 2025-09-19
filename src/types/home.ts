@@ -1,21 +1,21 @@
-export interface IconLink {
+export interface IconLinkType {
   name: string;
   url: string;
   icon: React.ReactNode;
   color: string;
 }
 
-export interface Stat {
+export interface StatType {
   id: number;
   name: string;
   value: number | string;
 }
 
-export interface HomeContent {
+export interface HomeContentType {
   title: string;
   description: string;
   resume: string;
   image: string;
-  links: IconLink[];
-  stats: Stat[];
+  links: IconLinkType[];
+  stats: StatType[];
 }

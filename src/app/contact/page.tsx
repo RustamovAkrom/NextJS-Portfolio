@@ -100,6 +100,7 @@ function SendMessageForm() {
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center">
         Send me a message
       </h2>
+
       <p className="text-center text-gray-600 dark:text-gray-400">
         I’d love to hear from you! Just fill out this form.
       </p>
@@ -150,6 +151,7 @@ function SendMessageForm() {
       >
         Send Message
       </button>
+      
       {status && <p className="text-center mt-2">{status}</p>}
     </motion.form>
   );

@@ -5,21 +5,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  github: string;
-  deploy: string;
-  slug: string;
-  date: string;
-  technologies: string[];
-  screenshots: string[];
-}
+import type { ProjectType } from "@/types/projects";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
   const [filterYear, setFilterYear] = useState<string>("all");
   const [loading, setLoading] = useState(true);
 
