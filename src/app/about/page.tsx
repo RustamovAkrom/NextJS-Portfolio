@@ -2,12 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
-
-
 import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
+
+
 function MyJourneySection({
   timeline,
   filters,
@@ -108,27 +106,6 @@ export default function AboutPage() {
 
   return (
     <div className="container">
-      {/* Back button
-      <section className="mx-auto flex items-center justify-between max-w-7xl mx-auto">
-
-      <div className="max-w-5xl mx-auto px-4 pt-6">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to home
-        </Link>
-      </div>
-      <div className="max-w-5xl mx-auto px-4 pt-6">
-        <Link
-          href="/skills"
-          className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
-        >
-          go to skills
-          <ArrowRight className="h-4 w-4" /> 
-        </Link>
-      </div>
-      </section> */}
 
       {/* Hero section */}
       <section className="relative py-20 sm:py-28">

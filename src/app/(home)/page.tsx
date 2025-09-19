@@ -146,7 +146,7 @@ export default function Home() {
           >
             About Me?
           </Link>
-          . So let's move on...
+          . So let`s move on...
         </p>
       </div>
     </div>
