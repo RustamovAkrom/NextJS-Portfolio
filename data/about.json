@@ -10,8 +10,8 @@
                 "href": "/projects"
             },
             {
-                "name": "Certificates",
-                "href": "/certificates"
+                "name": "Services",
+                "href": "/services"
             },
             {
                 "name": "Skills",
@@ -20,6 +20,10 @@
             {
                 "name": "Contact",
                 "href": "/contact"
+            },
+            {
+                "name": "Resume",
+                "href": "/resumes/resume-1.pdf"
             }
         ],
         "stats": [

@@ -1,15 +1,15 @@
-export interface Link {
+export interface LinkType {
   href: string;
   name: string;
 }
 
-export interface Stat {
+export interface StatType {
   id: number;
   name: string;
   value: number | string;
 }
 
-export interface TimelineItem {
+export interface TimelineItemType {
   id: number;
   type: string;
   role: string;
@@ -19,11 +19,11 @@ export interface TimelineItem {
   icon: React.ReactNode;
 }
 
-export interface AboutContent {
+export interface AboutContentType {
   image: string;
   alt: string;
-  links: Link[];
-  stats: Stat[];
-  timeline: TimelineItem[];
+  links: LinkType[];
+  stats: StatType[];
+  timeline: TimelineItemType[];
   filters: string[];
 }

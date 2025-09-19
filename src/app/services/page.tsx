@@ -6,17 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Sparkles } from "lucide-react";
 import * as  Icons from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-
-
-interface Service {
-  title: string;
-  description: string;
-  icon: keyof typeof Icons;
-  features: string[];
-}
+import Link from "next/link";
+import type { ServiceType } from "@/types/services";
 
 export default function ServicesPage() {
-  const [services, setServices] = useState<Service[]>([]);
+  const [services, setServices] = useState<ServiceType[]>([]);
 
   useEffect(() => {
     async function fetchServices() {
@@ -97,6 +91,23 @@ export default function ServicesPage() {
             </motion.div>
           );
         })}
+      </div>
+
+      
+      {/* Mention Section */}
+      <div className="max-w-4xl mx-auto px-4 pb-14 text-center mt-20">
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-6" />
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
+          Do you want start project call me {" "}
+          <Link
+            href="/contact"
+            target="_blank"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            Contact
+          </Link>
+          . And we will build something amazing ✨
+        </p>
       </div>
     </section>
   );

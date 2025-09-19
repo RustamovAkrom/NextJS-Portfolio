@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Clock, Github, Linkedin, Send, Instagram } from "lucide-react"
-import type { IconMap } from "@/types/contact"
+import type { IconMapType } from "@/types/contact"
 
-export const iconMap: IconMap = {
+export const iconMap: IconMapType = {
   "map-pin": MapPin,
   phone: Phone,
   mail: Mail,

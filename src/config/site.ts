@@ -5,7 +5,8 @@ export const siteConfig = {
   title: "Akrom.Dev – Portfolio & Projects",
   description:
     "Akrom's personal portfolio showcasing projects, skills, and experience in web development.",
-
+  deployed_url: "https://akrom-omega.vercel.app/",
+  
   navLinks: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },

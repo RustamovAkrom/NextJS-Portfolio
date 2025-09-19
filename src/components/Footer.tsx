@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
+import { PersonStanding } from "lucide-react";
 
 export default function Footer() {
   const pathname = usePathname();

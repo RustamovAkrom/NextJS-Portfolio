@@ -3,22 +3,7 @@
 import { motion } from "framer-motion";
 import { Code, Database, Palette, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
-
-interface Skill {
-  icon: string;
-  title: string;
-  items: string[];
-}
-
-interface ProgressSkill {
-  name: string;
-  level: number;
-}
-
-interface SkillsData {
-  skills: Skill[];
-  progressSkills: ProgressSkill[];
-}
+import type { SkillType, ProgressSkillType, SkillsDataType } from "@/types/skills";
 
 const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Database,
@@ -28,7 +13,7 @@ const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>
 };
 
 // ✅ Карточка
-function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+function SkillCard({ skill, index }: { skill: SkillType; index: number }) {
   const IconComponent = iconMap[skill.icon];
 
   return (
@@ -64,7 +49,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 }
 
 // ✅ Прогресс-бар
-function ProgressBar({ skill, index }: { skill: ProgressSkill; index: number }) {
+function ProgressBar({ skill, index }: { skill: ProgressSkillType; index: number }) {
   return (
     <div>
       <div className="flex justify-between mb-2 text-sm sm:text-base">
@@ -84,7 +69,7 @@ function ProgressBar({ skill, index }: { skill: ProgressSkill; index: number }) 
 }
 
 export default function Skills() {
-  const [data, setData] = useState<SkillsData | null>(null);
+  const [data, setData] = useState<SkillsDataType | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
@@ -101,7 +86,7 @@ export default function Skills() {
   const visibleSkills = showAll ? data.progressSkills : data.progressSkills.slice(0, 6);
 
   return (
-    <div className="...">
+    <div className="container">
       {/* 🔹 Заголовок */}
       <section className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,7 +106,7 @@ export default function Skills() {
           </motion.div>
 
           {/* 🔹 Карточки */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.skills.map((skill, i) => (
               <SkillCard key={i} skill={skill} index={i} />
             ))}

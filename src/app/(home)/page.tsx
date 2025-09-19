@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollDownButton from "@/components/ScrollDownButton";
-import { HomeContent } from "@/types/home";
+import { HomeContentType } from "@/types/home";
 
 export default function Home() {
-  const [data, setData] = useState<HomeContent[] | null>(null);
+  const [data, setData] = useState<HomeContentType[] | null>(null);
 
   useEffect(() => {
     fetch("/api/home")
@@ -133,6 +133,22 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+            
+      {/* Mention Section */}
+      <div className="max-w-4xl mx-auto px-4 pb-14 text-center">
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-6" />
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
+          Do you want to know {" "}
+          <Link
+            href="/about"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            About Me?
+          </Link>
+          . So let's move on...
+        </p>
+      </div>
     </div>
   );
 }

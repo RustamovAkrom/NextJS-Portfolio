@@ -5,17 +5,17 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundAnimation from "@/components/BagroundAnimation";
+import { siteConfig } from "@/config/site";
+
 
 export const metadata = {
-  title: "Portfolio - Akrom Rustamov",
-  description:
-    "My personal portfolio website built with Next.js, showcasing my projects, blog, and skills. Created by Akrom Rustamov.",
-  metadataBase: new URL("https://akrom-omega.vercel.app/"),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.deployed_url),
   openGraph: {
-    title: "Akrom Rustamov - Portfolio",
-    description:
-      "Explore my Next.js portfolio website: projects, blog, dark/light mode, and modern design.",
-    url: "https://akrom-omega.vercel.app/",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.deployed_url,
     siteName: "Akrom Rustamov Portfolio",
     images: [
       {
@@ -30,9 +30,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akrom Rustamov - Portfolio",
-    description:
-      "My personal portfolio website built with Next.js, showing my projects, blog, and skills.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: ["https://akrom-omega.vercel.app/banner.png"],
   },
   robots: {
