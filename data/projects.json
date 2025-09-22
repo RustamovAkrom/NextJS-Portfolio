@@ -68,5 +68,23 @@
         {"src": "/projects/project_3/admin-posts.png"},
         {"src": "/projects/project_3/admin-update.png"}
     ]
+  },
+  {
+    "title": "Next.JS Blog + Sanity CMS",
+   
+  "description": "Modern portfolio web application built with Next.js and a headless CMS. Features include dynamic content management, responsive design, and fast performance.",
+  "longDescription": "This project is a modern portfolio web application developed using Next.js for the frontend and a headless CMS for content management. The application allows easy creation and management of portfolio items, blog posts, and other dynamic content without manual coding. It is designed with a responsive layout, ensuring optimal display across desktops, tablets, and mobile devices. Next.js provides server-side rendering and static site generation for improved performance and SEO. The CMS integration allows content updates in real time, making the application flexible and scalable for future additions. Overall, this portfolio platform combines modern frontend technologies with a powerful content management system to provide a fast, secure, and user-friendly experience for both visitors and content managers.",
+    "image": "/projects/project_4/home-dark.png",
+    "slug": "nextjs-blog-sanity-cms",
+    "github": "https://github.com/RustamovAkrom/Next-JS-BLog/",
+    "deploy": "https://akromblogdev.vercel.app",
+    "date": "2024-06-12",
+    "technologies": ["Next.js", "Sanity", "CMS"],
+    "screenshots": [
+        {"src": "/projects/project_4/home-dark.png"},
+        {"src": "/projects/project_4/home-light.png"},
+        {"src": "/projects/project_4/post-details-dark.png"},
+        {"src": "/projects/project_4/post-details-light.png"}
+    ]
   }
 ]
