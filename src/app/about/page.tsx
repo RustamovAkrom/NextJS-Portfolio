@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
 
-
 function MyJourneySection({
   timeline,
   filters,
@@ -71,9 +70,7 @@ function MyJourneySection({
               {/* Content */}
               <div className="flex-1 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
                 <h3 className="text-lg font-semibold">{item.role}</h3>
-                <span className="text-xs text-primary font-medium">
-                  {item.period}
-                </span>
+                <span className="text-xs text-primary font-medium">{item.period}</span>
                 <p className="text-muted-foreground text-sm mt-1 font-medium">
                   {item.company}
                 </p>
@@ -106,8 +103,7 @@ export default function AboutPage() {
 
   return (
     <div className="container">
-
-      {/* Hero section */}
+      {/* Hero section: Image + Links */}
       <section className="relative py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
           {/* Image */}
@@ -133,55 +129,116 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
 
-          {/* Text */}
-          <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-5">About Me</h2>
-            <p className="text-base text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0">
-              I’m passionate about creating seamless digital experiences.  
-              With strong knowledge in backend, frontend, and design tools,  
-              I strive to blend creativity with performance-driven code.
-            </p>
+          {/* Links */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {content.links.map((link: LinkType, idx: number) => (
+              <motion.a
+                key={idx}
+                href={link.href}
+                whileHover={{ scale: 1.05, y: -3 }}
+                className="block rounded-lg bg-white/40 dark:bg-gray-800/40 backdrop-blur border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition-all"
+              >
+                <h3 className="text-base font-semibold mb-1">{link.name}</h3>
+                <p className="text-muted-foreground text-xs">
+                  Learn more about {link.name.toLowerCase()}.
+                </p>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Links */}
-            <div className="grid sm:grid-cols-2 gap-4 mb-10">
-              {content.links.map((link: LinkType, idx: number) => (
-                <motion.a
-                  key={idx}
-                  href={link.href}
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  className="block rounded-lg bg-white/40 dark:bg-gray-800/40 backdrop-blur border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition-all"
-                >
-                  <h3 className="text-base font-semibold mb-1">{link.name}</h3>
-                  <p className="text-muted-foreground text-xs">
-                    Learn more about {link.name.toLowerCase()}.
-                  </p>
-                </motion.a>
-              ))}
-            </div>
+        {/* About Me + Stats */}
+        <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+          <div className="max-w-5xl mx-auto px-6">
+            <motion.div
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">
+                About Me
+              </h2>
+              <p className="text-muted-foreground text-lg sm:text-xl mb-12 max-w-3xl mx-auto">
+                A quick look into my journey, skills, and passion for building modern digital solutions.
+              </p>
+            </motion.div>
+
+            {/* Content Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-xl rounded-2xl p-10 mb-14"
+            >
+              <div className="prose dark:prose-invert max-w-none text-lg leading-relaxed space-y-6">
+                <p>
+                  I am a <span className="font-semibold">software developer</span> with a strong foundation in
+                  <span className="font-semibold"> backend development using Python, Django, and DRF</span>.  
+                  I specialize in designing <span className="font-semibold">scalable, secure, and production-ready APIs</span>, 
+                  always focusing on clean and maintainable code.
+                </p>
+
+                <p>
+                  At the same time, I don’t limit myself to backend only.  
+                  I actively explore <span className="font-semibold">frontend frameworks like React and Next.js</span>, 
+                  building <span className="font-semibold">fullstack projects</span> that combine performance with great user experience.  
+                  This allows me to understand the full cycle of product development — from database design to user-facing interfaces.
+                </p>
+
+                <p>
+                  I constantly study and apply <span className="font-semibold">advanced technologies</span>, always looking 
+                  for new challenges to grow as a versatile engineer.  
+                  For me, technology is not just about writing code — it’s about solving problems, creating impact, 
+                  and delivering real value to both users and businesses.
+                </p>
+
+                <p>
+                  My goal is to bring <span className="font-semibold">creativity, responsibility, and technical expertise</span> 
+                  into every project I work on, ensuring results that are both reliable and innovative.
+                </p>
+              </div>
+            </motion.div>
 
             {/* Stats */}
-            <dl className="grid grid-cols-2 gap-6 text-center">
+            <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
               {content.stats.map((stat: StatType) => (
                 <motion.div
                   key={stat.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: stat.id * 0.15 }}
-                  className="flex flex-col gap-y-1 bg-white/30 dark:bg-gray-800/30 backdrop-blur rounded-lg p-4 shadow-sm"
+                  className="flex flex-col gap-y-1 bg-white/40 dark:bg-gray-800/40 backdrop-blur rounded-lg p-5 shadow-sm"
                 >
-                  <dd className="text-2xl font-bold">{stat.value}</dd>
-                  <dt className="text-muted-foreground text-xs">{stat.name}</dt>
+                  <dd className="text-3xl font-bold">{stat.value}</dd>
+                  <dt className="text-muted-foreground text-sm">{stat.name}</dt>
                 </motion.div>
               ))}
             </dl>
-          </motion.div>
-        </div>
-      </section>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium shadow hover:shadow-lg transition"
+              >
+                Let’s connect
+              </motion.a>
+              <motion.a
+                href="/cv.pdf"
+                download
+                whileHover={{ scale: 1.05 }}
+                className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              >
+                Download CV
+              </motion.a>
+            </div>
+          </div>
+        </section>
+
+
 
       {/* Timeline */}
       <MyJourneySection timeline={content.timeline} filters={content.filters} />

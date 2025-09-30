@@ -2,32 +2,24 @@
 
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import ThemeToggle from "./ThemeToggle";
-import { Sparkles } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import NavLink from "./NavLinks";
 import Link from "next/link";
+import { Sparkles } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import NavLink from "./NavLinks";
+import { siteConfig } from "@/config/site";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header
-      className="fixed top-0 left-0 w-full z-50 
-                 bg-white/70 dark:bg-gray-900/80 
-                 backdrop-blur-md border-b 
-                 border-gray-200/50 dark:border-gray-800/50"
-    >
-      <nav
-        aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between 
-                   px-4 py-3 lg:px-8"
-      >
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/70 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+        
         {/* Лого */}
         <div className="flex items-center lg:flex-1">
           <Link
             href="/"
-            className="flex items-center gap-1 text-gray-800 dark:text-gray-100 font-semibold"
+            className="flex items-center gap-2 text-gray-800 dark:text-gray-100 font-semibold"
           >
             <Sparkles className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
             <span className="text-sm sm:text-base tracking-wide">
@@ -37,34 +29,8 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Кнопка для мобильного меню */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="p-2 rounded-md text-gray-600 dark:text-gray-300 
-                       hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
-              className="w-6 h-6"
-            >
-              <path
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-
         {/* Десктопное меню */}
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden lg:flex lg:ml-12 lg:gap-x-8">
           {siteConfig.navLinks.map(({ label, href }) => (
             <NavLink key={href} href={href} label={label} />
           ))}
@@ -74,6 +40,30 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <ThemeToggle />
         </div>
+
+        {/* Мобильная кнопка меню */}
+        <div className="flex lg:hidden">
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Мобильное меню */}
@@ -82,15 +72,13 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden"
       >
-        {/* Задний фон */}
+        {/* Фон */}
         <div className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" />
 
         {/* Панель меню */}
-        <Dialog.Panel
-          className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-xs 
-                     bg-white dark:bg-gray-900 p-5 shadow-xl"
-        >
-          {/* Заголовок меню */}
+        <Dialog.Panel className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-xs bg-white/90 dark:bg-gray-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-md transition-all">
+          
+          {/* Заголовок */}
           <div className="flex items-center justify-between mb-6">
             <span className="text-base font-semibold text-gray-800 dark:text-gray-100">
               {siteConfig.name}.Dev
@@ -100,17 +88,16 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-md text-gray-600 dark:text-gray-300 
-                           hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
+                className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
               >
                 <span className="sr-only">Close menu</span>
                 <svg
-                  viewBox="0 0 24 24"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth={1.5}
+                  viewBox="0 0 24 24"
                   aria-hidden="true"
-                  className="w-5 h-5"
                 >
                   <path
                     d="M6 18 18 6M6 6l12 12"
@@ -123,13 +110,13 @@ export default function Header() {
           </div>
 
           {/* Навигация */}
-          <nav className="flex flex-col space-y-3 mt-4">
+          <nav className="flex flex-col mt-6 space-y-4">
             {siteConfig.navLinks.map(({ label, href }) => (
               <NavLink
                 key={href}
                 href={href}
                 label={label}
-                
+                // className="text-gray-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400 transition"
               />
             ))}
           </nav>

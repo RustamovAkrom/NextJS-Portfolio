@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundAnimation from "@/components/BagroundAnimation";
 import { siteConfig } from "@/config/site";
+import Loader from "@/components/Loader";
 
 
 export const metadata = {
@@ -40,18 +41,20 @@ export const metadata = {
   },
 };
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["greek-ext"] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Header />
-          <BackgroundAnimation>
-            <main className="container mx-auto px-4 py-8">{children}</main>
-          </BackgroundAnimation>
-          <Footer />
+          <Loader>
+            <Header />
+            <BackgroundAnimation>
+              <main className="container mx-auto px-4 py-8">{children}</main>
+            </BackgroundAnimation>
+            <Footer />
+          </Loader>
         </ThemeProvider>
       </body>
     </html>

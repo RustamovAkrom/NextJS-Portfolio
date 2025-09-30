@@ -2,7 +2,7 @@
     {
         "title": "Next.JS Portfolio",
         "description": "Personal portfolio maked with Next.JS integration with dark and light modes, white beauteful style and components.",
-        "image": "/projects/project_1/home-dark.png",
+        "image": "/projects/project_1/banner.webp",
         "slug": "nextjs-portfolio",
         "github": "https://github.com/RustamovAkrom/NextJS-Portfolio",
         "deploy": "https://akrom-omega.vercel.app/",
@@ -20,10 +20,10 @@
         ]
     },
     {
-    "title": "Voice Assistant Jarvis",
+    "title": "Голосовой ассистент Джарвис",
     "description": "Интеллектуальный голосовой ассистент, созданный на Python. Поддерживает распознавание и синтез речи, управление системой, работу с интернетом и интеграцию с различными библиотеками.",
     "longDescription": "Этот проект представляет собой интеллектуального голосового ассистента, разработанного на Python. Ассистент способен распознавать и синтезировать речь, что позволяет ему взаимодействовать с пользователем на естественном языке. Он может выполнять различные задачи, включая управление системой (открытие приложений, управление файлами), работу с интернетом (поиск информации, отправка сообщений) и интеграцию с различными библиотеками для расширения своих возможностей. Проект использует такие библиотеки, как SpeechRecognition для распознавания речи, Pyttsx3 для синтеза речи, а также Requests и BeautifulSoup4 для работы с веб-контентом. Ассистент также поддерживает функции управления звуком и мониторинга системы с помощью PyCaw и Psutil. Этот проект демонстрирует потенциал использования Python для создания сложных и полезных приложений в области искусственного интеллекта и обработки естественного языка.",
-    "image": "/projects/project_2/banner.png",
+    "image": "/projects/project_2/banner.webp",
     "slug": "voice-assistant-jarvis",
     "github": "https://github.com/RustamovAkrom/Jarvis", 
     "deploy": null,
@@ -51,7 +51,7 @@
     "title": "Blog Web App",
     "description": "Full-stack blog web application built with Django, and Bootstrap for the frontend, and other safety dependencies with PostgreSQL and Sqlite3 for the backend. Features include user authentication, CRUD operations for posts, and a responsive design.",
     "longDescription": "This project is a comprehensive full-stack blog web application developed using Django for the backend and Bootstrap for the frontend. The application is designed to provide a seamless user experience with features such as user authentication, allowing users to register, log in, and manage their profiles securely. It supports CRUD (Create, Read, Update, Delete) operations for blog posts, enabling users to create new posts, view existing ones, edit their content, and delete them as needed. The application is built with a responsive design using Bootstrap, ensuring it works well on various devices, from desktops to mobile phones. For data storage, the application utilizes PostgreSQL as the primary database and SQLite3 for development purposes. Additionally, the project incorporates several security-focused dependencies to enhance the safety and integrity of user data and interactions. Overall, this blog web application serves as a robust platform for users to share their thoughts and engage with content in a secure and user-friendly environment.",
-    "image": "/projects/project_3/home.png",
+    "image": "/projects/project_3/banner.webp",
     "slug": "blog-web-app",
     "github": "https://github.com/RustamovAkrom/Blog-Web-APP/",
     "deploy": null,
@@ -62,7 +62,6 @@
         {"src": "/projects/project_3/login.png"},
         {"src": "/projects/project_3/register.png"},
         {"src": "/projects/project_3/post-detail.png"},
-        {"src": "/projects/project_3/working.png"},
         {"src": "/projects/project_3/admin-home.png"},
         {"src": "/projects/project_3/admin-models.png"},
         {"src": "/projects/project_3/admin-posts.png"},
@@ -74,7 +73,7 @@
    
   "description": "Modern portfolio web application built with Next.js and a headless CMS. Features include dynamic content management, responsive design, and fast performance.",
   "longDescription": "This project is a modern portfolio web application developed using Next.js for the frontend and a headless CMS for content management. The application allows easy creation and management of portfolio items, blog posts, and other dynamic content without manual coding. It is designed with a responsive layout, ensuring optimal display across desktops, tablets, and mobile devices. Next.js provides server-side rendering and static site generation for improved performance and SEO. The CMS integration allows content updates in real time, making the application flexible and scalable for future additions. Overall, this portfolio platform combines modern frontend technologies with a powerful content management system to provide a fast, secure, and user-friendly experience for both visitors and content managers.",
-    "image": "/projects/project_4/home-dark.png",
+    "image": "/projects/project_4/banner-light.webp",
     "slug": "nextjs-blog-sanity-cms",
     "github": "https://github.com/RustamovAkrom/Next-JS-BLog/",
     "deploy": "https://akromblogdev.vercel.app",
@@ -83,8 +82,33 @@
     "screenshots": [
         {"src": "/projects/project_4/home-dark.png"},
         {"src": "/projects/project_4/home-light.png"},
-        {"src": "/projects/project_4/post-details-dark.png"},
-        {"src": "/projects/project_4/post-details-light.png"}
+        {"src": "/projects/project_4/posts-dark.png"},
+        {"src": "/projects/project_4/posts-light.png"},
+        {"src": "/projects/project_4/about-dark.png"},
+        {"src": "/projects/project_4/about-light.png"},
+        {"src": "/projects/project_4/contact-dark.png"},
+        {"src": "/projects/project_4/contact-light.png"},
+        {"src": "/projects/project_4/banner-dark.webp"}
     ]
-  }
+  },
+  {
+  "title": "SpotifyAPI",
+  "description": "A Django REST API project for interacting with Spotify data. Provides endpoints for tracks, playlists, and users with JWT authentication and background tasks using Celery.",
+  "longDescription": "SpotifyAPI is a comprehensive Django REST Framework project that allows developers to interact with Spotify data programmatically. The API supports retrieving information about tracks, playlists, and user profiles. It includes JWT-based authentication for secure access to protected endpoints and integrates Celery for handling asynchronous background tasks such as periodic updates or data processing. The backend uses PostgreSQL for efficient storage and management of data. Additionally, the project provides interactive API documentation through Swagger/OpenAPI, making it easy for developers to test and explore the available endpoints. This project demonstrates a full-stack backend setup with modern tools and best practices for building scalable and maintainable APIs.",
+  "image": "/projects/project_5/banner.webp",
+  "slug": "spotifyapi",
+  "github": "https://github.com/RustamovAkrom/SpotifyAPI",
+  "deploy": null,
+  "date": "2025-09-29",
+  "technologies": ["Python", "Django", "Django REST Framework", "Celery", "PostgreSQL", "JWT", "Swagger", "Redis"],
+  "screenshots": [
+    {"src": "/projects/project_5/image-1.webp", "alt": "image-1"},
+    {"src": "/projects/project_5/image-2.webp", "alt": "imaeg-2"},
+    {"src": "/projects/project_5/image-3.webp", "alt": "image-3"},
+    {"src": "/projects/project_5/image-4.webp", "alt": "image-4"},
+    {"src": "/projects/project_5/image-5.webp", "alt": "image-5"}
+    
+  ]
+}
+
 ]

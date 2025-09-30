@@ -1,11 +1,12 @@
 export interface ProjectType {
   title: string;
   description: string;
+  longDescription?: string;
   image: string;
-  github: string;
-  deploy: string;
   slug: string;
   date: string;
   technologies: string[];
-  screenshots: string[];
+  github: string;
+  deploy: string;
+  screenshots: { src: string; alt: string }[];
 }
