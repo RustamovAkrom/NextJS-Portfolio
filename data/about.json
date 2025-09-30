@@ -24,6 +24,10 @@
             {
                 "name": "Resume",
                 "href": "/resumes/resume-1.pdf"
+            },
+            {
+                "name": "Certificates",
+                "href": "/certificates"
             }
         ],
         "stats": [

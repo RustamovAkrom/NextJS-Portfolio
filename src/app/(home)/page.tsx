@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollDownButton from "@/components/ScrollDownButton";
@@ -9,16 +9,25 @@ import { HomeContentType } from "@/types/home";
 
 export default function Home() {
   const [data, setData] = useState<HomeContentType[] | null>(null);
+  const [randomImage, setRandomImage] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/home")
       .then((res) => res.json())
-      .then((json) => setData(json))
+      .then((json) => {
+        setData(json);
+        // Выбираем рандомное изображение из API
+        if (json.length && json[0].images?.length) {
+          const imgs = json[0].images;
+          const idx = Math.floor(Math.random() * imgs.length);
+          setRandomImage(imgs[idx]);
+        }
+      })
       .catch((err) => console.error("Ошибка загрузки:", err));
   }, []);
 
-  if (!data?.length) {
-    return <p className="text-center">Loading...</p>;
+  if (!data?.length || !randomImage) {
+    return <p className="text-center mt-20">Loading...</p>;
   }
 
   const content = data[0];
@@ -29,68 +38,75 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="bg-gray900 w-full text-black dark:text-white py-8 sm:py-12">
           <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
-            
+
             {/* Текстовая часть */}
             <motion.div
-              className="space-y-5 order-1 text-center md:text-left"
+              className="space-y-5 order-1 text-center md:text-left max-w-xl"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-balance">
+              <motion.h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-snug"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
                 {content.title}
-              </h1>
+              </motion.h1>
 
               <motion.p
-                className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-medium text-pretty text-gray-400"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                viewport={{ once: true }}
+                className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-300 leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
               >
                 {content.description}
               </motion.p>
 
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-x-5">
-                <Link
-                  href="/projects"
-                  className="rounded-md bg-indigo px-4 py-2 text-sm font-semibold shadow hover:bg-indigo-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                  View Portfolio
-                </Link>
-                <Link
-                  href={content.resume}
-                  className="rounded-md bg-indigo px-4 py-2 text-sm font-semibold shadow hover:bg-indigo-400/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                  Download Resume
-                </Link>
-              </div>
+              {/* Кнопки */}
+              {/* Твои анимированные кнопки */}
             </motion.div>
 
             {/* Фото */}
             <motion.div
-              className="flex justify-center md:justify-end items-center order-2"
+              className="flex justify-center md:justify-end items-center order-2 relative"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
+              {/* Glow effect */}
               <motion.div
-                className="relative flex justify-center"
-                whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              >
-                <Image
-                  className="rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-lg cursor-pointer"
-                  width={320}
-                  height={320}
-                  src={content.image}
-                  alt="Akrom Rustamov profile photo"
-                  priority
-                />
-              </motion.div>
+                className="absolute rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-indigo-500/30 dark:bg-indigo-400/30 blur-2xl"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+
+              {/* Image with fade and tilt */}
+              <AnimatePresence>
+                <motion.div
+                  key={randomImage}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative flex justify-center"
+                  whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
+                >
+                  <Image
+                    className="rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-lg cursor-pointer relative z-10"
+                    width={320}
+                    height={320}
+                    src={randomImage}
+                    alt="Random Hero"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
+
           </div>
         </div>
 
@@ -134,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-            
+
       {/* Mention Section */}
       <div className="max-w-4xl mx-auto px-4 pb-14 text-center">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-6" />

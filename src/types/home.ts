@@ -15,7 +15,7 @@ export interface HomeContentType {
   title: string;
   description: string;
   resume: string;
-  image: string;
+  images: string;
   links: IconLinkType[];
   stats: StatType[];
 }
