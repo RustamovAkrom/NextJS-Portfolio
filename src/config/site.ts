@@ -13,7 +13,7 @@ export const siteConfig = {
     { label: "Skills", href: "/skills" },
     { label: "Portfolio", href: "/projects" },
     { label: "Services", href: "/services" },
-    { label: "Blog", href: "https://akromblogdev.vercel.app" },
+    { label: "Blog ->", href: "https://akromblogdev.vercel.app" },
     { label: "Contact", href: "/contact" },
   ],
 

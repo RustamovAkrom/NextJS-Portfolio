@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "title": "Certified Web Developer",
+        "image": "/certificates/certificat-of-najot-talim.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Certified Web Developer",
+        "image": "/certificates/diplom-of-najot-talim.jpg"
+    }
+]
