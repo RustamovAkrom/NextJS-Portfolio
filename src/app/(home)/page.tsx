@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollDownButton from "@/components/ScrollDownButton";
+
 import { HomeContentType } from "@/types/home";
 
 export default function Home() {
@@ -33,81 +34,115 @@ export default function Home() {
   const content = data[0];
 
   return (
-    <div>
+    <div className="">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray900 w-full text-black dark:text-white py-8 sm:py-12">
-          <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
+      <section className="relative min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-4 sm:px-6 lg:px-8">
 
-            {/* Текстовая часть */}
-            <motion.div
-              className="space-y-5 order-1 text-center md:text-left max-w-xl"
-              initial={{ opacity: 0, y: 50 }}
+          {/* Текстовая часть */}
+          <motion.div
+            className="space-y-5 text-center md:text-left max-w-xl mx-auto md:mx-0"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-snug text-balance"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-snug"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                {content.title}
-              </motion.h1>
+              {content.title}
+            </motion.h1>
 
-              <motion.p
-                className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-300 leading-relaxed"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              >
-                {content.description}
-              </motion.p>
+            <motion.p
+              className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-medium text-gray-600 dark:text-gray-300 leading-relaxed text-balance"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              {content.description}
+            </motion.p>
 
-              {/* Кнопки */}
-              {/* Твои анимированные кнопки */}
-            </motion.div>
-
-            {/* Фото */}
+            {/* Кнопки */}
             <motion.div
-              className="flex justify-center md:justify-end items-center order-2 relative"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
+              className="mt-6 sm:mt-8 flex flex-wrap justify-center md:justify-start gap-3 sm:gap-x-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
             >
-              {/* Glow effect */}
-              <motion.div
-                className="absolute rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-indigo-500/30 dark:bg-indigo-400/30 blur-2xl"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-
-              {/* Image with fade and tilt */}
-              <AnimatePresence>
-                <motion.div
-                  key={randomImage}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8 }}
-                  className="relative flex justify-center"
-                  whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
+              {/* Зеленая кнопка */}
+              <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
+                <Link
+                  href="/projects"
+                  className="rounded-md bg-blue-600/20 dark:bg-blue-600/30 px-5 py-2 text-sm sm:text-base font-semibold text-blue-800 dark:text-white shadow-md hover:bg-blue-500/80 hover:shadow-lg transition-all duration-300 whitespace-nowrap"
                 >
-                  <Image
-                    className="rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-lg cursor-pointer relative z-10"
-                    width={320}
-                    height={320}
-                    src={randomImage}
-                    alt="Random Hero"
-                    priority
-                  />
-                </motion.div>
-              </AnimatePresence>
+                  View Portfolio
+                </Link>
+              </motion.div>
+
+              {/* Белая кнопка */}
+              <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
+                <Link
+                  href={content.resume}
+                  className="rounded-md bg-white-600/20 dark:bg-white/20 px-5 py-2 text-sm sm:text-base font-semibold text-dark-800 dark:text-dark-900 shadow-md hover:bg-white/80 dark:hover:bg-gray-200/80 hover:shadow-lg transition-all duration-300 whitespace-nowrap"
+                >
+                  Download Resume
+                </Link>
+              </motion.div>
+
+              {/* Синяя кнопка */}
+              <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
+                <Link
+                  href="/about"
+                  className="rounded-md bg-green-600/20 dark:bg-green-600/30 px-5 py-2 text-sm sm:text-base font-semibold text-green-800 dark:text-white shadow-md hover:bg-green-500/80 hover:shadow-lg transition-all duration-300 whitespace-nowrap"
+                >
+                  About Me
+                </Link>
+              </motion.div>
             </motion.div>
 
-          </div>
+          </motion.div>
+
+          {/* Фото */}
+          <motion.div
+            className="flex justify-center md:justify-end items-center relative"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            {/* Glow effect */}
+            <motion.div
+              className="absolute rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-indigo-500/30 dark:bg-indigo-400/30 blur-2xl"
+              animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+
+            {/* Image with fade and tilt */}
+            <AnimatePresence>
+              <motion.div
+                key={randomImage}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.8 }}
+                className="relative flex justify-center"
+                whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
+              >
+                <Image
+                  className="rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover shadow-lg cursor-pointer relative z-10"
+                  width={320}
+                  height={320}
+                  src={randomImage}
+                  alt="Random Hero"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
         </div>
 
         {/* Scroll Down */}
