@@ -16,7 +16,7 @@ export default function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         
         {/* Лого */}
-        <div className="flex items-center lg:flex-1">
+        <div className="flex items-center flex-shrink-0">
           <Link
             href="/"
             className="flex items-center gap-2 text-gray-800 dark:text-gray-100 font-semibold"
@@ -29,23 +29,21 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Десктопное меню */}
-        <div className="hidden lg:flex lg:ml-12 lg:gap-x-8">
+        {/* Навигация (desktop) */}
+        <div className="hidden lg:flex lg:gap-x-8">
           {siteConfig.navLinks.map(({ label, href }) => (
             <NavLink key={href} href={href} label={label} />
           ))}
         </div>
 
-        {/* Тема (dark/light toggle) */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* Тогглер темы — теперь видим везде */}
+        <div className="flex items-center gap-3">
           <ThemeToggle />
-        </div>
 
-        {/* Мобильная кнопка меню */}
-        <div className="flex lg:hidden">
+          {/* Кнопка меню (только на мобильных) */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
+            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition lg:hidden"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -83,41 +81,33 @@ export default function Header() {
             <span className="text-base font-semibold text-gray-800 dark:text-gray-100">
               {siteConfig.name}.Dev
             </span>
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
+            >
+              <span className="sr-only">Close menu</span>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
               >
-                <span className="sr-only">Close menu</span>
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6 18 18 6M6 6l12 12"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  d="M6 18 18 6M6 6l12 12"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
 
           {/* Навигация */}
           <nav className="flex flex-col mt-6 space-y-4">
             {siteConfig.navLinks.map(({ label, href }) => (
-              <NavLink
-                key={href}
-                href={href}
-                label={label}
-                // className="text-gray-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400 transition"
-              />
+              <NavLink key={href} href={href} label={label} />
             ))}
           </nav>
         </Dialog.Panel>
