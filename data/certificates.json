@@ -1,12 +1,16 @@
 [
-    {
-        "id": 1,
-        "title": "Certified Web Developer",
-        "image": "/certificates/certificat-of-najot-talim.jpg"
-    },
-    {
-        "id": 2,
-        "title": "Certified Web Developer",
-        "image": "/certificates/diplom-of-najot-talim.jpg"
-    }
+  {
+    "id": 1,
+    "title": "Certified Web Developer",
+    "organization": "Najot Ta'lim",
+    "date": "June 2023",
+    "image": "/certificates/certificat-of-najot-talim.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Diploma of Completion",
+    "organization": "Najot Ta'lim",
+    "date": "August 2023",
+    "image": "/certificates/diplom-of-najot-talim.jpg"
+  }
 ]

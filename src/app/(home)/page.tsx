@@ -92,9 +92,10 @@ export default function Home() {
         >
           {/* Glow effect */}
           <motion.div
-            className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-indigo-500/30 dark:bg-indigo-400/30 blur-2xl"
-            animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full 
+                      bg-indigo-500/30 dark:bg-indigo-400/30 blur-2xl"
+            animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
           />
 
           <AnimatePresence mode="wait">
@@ -105,6 +106,7 @@ export default function Home() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.8 }}
               whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
+              whileTap={{ scale: 0.97 }}
               className="relative z-10"
             >
               <Image
