@@ -8,15 +8,10 @@ import { Github, Globe, ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-r
 import { useEffect, useState, use } from "react";
 import type { ProjectType } from "@/types/projects";
 
-
-
 export default function ProjectDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
-
   const [projects, setProjects] = useState<ProjectType[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Lightbox
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -35,8 +30,9 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
     fetchProjects();
   }, []);
 
-  if (loading) return <p className="text-center py-20">Загрузка...</p>;
-  const project: ProjectType | undefined = projects.find((p) => p.slug === slug);
+  if (loading) return <p className="text-center py-20 text-gray-500">Loading...</p>;
+
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
   const date = new Date(project.date).toLocaleDateString(undefined, {
@@ -46,8 +42,13 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
   });
 
   return (
-    <main className="min-h-screen mt-20">
-      {/* Back button */}
+    <main className="min-h-screen pt-20 relative overflow-hidden">
+      {/* 🌀 Background Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] bg-indigo-500/10 dark:bg-indigo-700/20 rounded-full blur-3xl" />
+      </div>
+
+      {/* 🔙 Back */}
       <div className="max-w-5xl mx-auto px-4 pt-6">
         <Link
           href="/projects"
@@ -57,47 +58,58 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
         </Link>
       </div>
 
-
-      {/* Hero image */}
-      <div className="max-w-7xl mx-auto px-4 pt-8">
+      {/* 🖼 Hero */}
+      <section className="max-w-7xl mx-auto px-4 pt-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="relative w-full h-96 sm:h-[600px] rounded-xl overflow-hidden shadow-lg border border-gray-200/50 dark:border-gray-700/50 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md"
+          className="relative w-full h-[400px] sm:h-[600px] rounded-2xl overflow-hidden border border-gray-300/40 dark:border-gray-700/40 shadow-2xl backdrop-blur-xl bg-gradient-to-br from-white/30 to-gray-100/10 dark:from-gray-900/40 dark:to-gray-800/20"
         >
           <Image
             src={project.image}
             alt={project.title}
             fill
+            priority
             className="object-cover hover:scale-105 transition-transform duration-700"
           />
         </motion.div>
-      </div>
+      </section>
 
-
-      {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 py-8">
-        <motion.div className="rounded-xl border bg-white/40 dark:bg-gray-900/40 backdrop-blur-md shadow-md p-6 md:p-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      {/* 🧠 Description Header */}
+      <section className="max-w-7xl mx-auto px-4 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 shadow-lg backdrop-blur-lg hover:shadow-indigo-500/10 transition-all"
+        >
+          <div className="flex flex-col md:flex-row justify-between md:items-center gap-6">
             <div>
-              <h1 className="text-4xl font-bold">{project.title}</h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-400">{project.description}</p>
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{date}</p>
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
+                {project.title}
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400 mb-2">{project.description}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{date}</p>
 
               <div className="mt-4 flex flex-wrap gap-2">
-                {project.technologies?.map(tech => (
-                  <span key={tech} className="px-3 py-1 rounded-full text-xs font-medium bg-gray-200/60 dark:bg-gray-800/50 text-gray-800 dark:text-gray-200 border border-gray-300/50 dark:border-gray-700/50">{tech}</span>
+                {project.technologies?.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-xs font-medium rounded-full bg-indigo-100/70 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200/30 dark:border-indigo-700/30"
+                  >
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 mt-4">
+            <div className="flex flex-wrap gap-3">
               {project.github && (
                 <Link
                   href={project.github}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-md transition-transform hover:scale-105"
+                  className="flex items-center gap-2 px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-lg shadow-indigo-500/20 transition-transform hover:scale-105"
                 >
                   <Github className="h-4 w-4" /> GitHub
                 </Link>
@@ -106,36 +118,35 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
                 <Link
                   href={project.deploy}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-800 hover:bg-gray-900 text-white font-medium shadow-md transition-transform hover:scale-105"
+                  className="flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-medium shadow-md transition-transform hover:scale-105"
                 >
                   <Globe className="h-4 w-4" /> Live Demo
                 </Link>
               )}
             </div>
-
           </div>
         </motion.div>
       </section>
 
-      {/* Gallery + Lightbox */}
+      {/* 📸 Gallery with Lightbox */}
       {project.screenshots && project.screenshots.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 pb-12">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="max-w-7xl mx-auto px-4 pb-20">
+          <h2 className="text-2xl font-semibold text-center mb-8">Gallery</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {project.screenshots.map((shot, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="relative w-full h-52 sm:h-64 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100/60 dark:bg-gray-800/50 shadow-md cursor-pointer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative rounded-xl overflow-hidden border border-gray-300/40 dark:border-gray-700/40 bg-white/20 dark:bg-gray-900/30 backdrop-blur-md shadow-md cursor-pointer"
                 onClick={() => setLightboxIndex(i)}
               >
                 <Image
                   src={shot.src}
                   alt={shot.alt || `Screenshot ${i + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  width={500}
+                  height={350}
+                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
                 />
               </motion.div>
             ))}
@@ -145,56 +156,48 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
           <AnimatePresence>
             {lightboxIndex !== null && (
               <motion.div
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setLightboxIndex(null)}
               >
                 <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.9, opacity: 0 }}
+                  initial={{ scale: 0.9 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="relative max-w-3xl w-full"
+                  className="relative max-w-5xl w-full p-4"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Close button */}
                   <button
-                    type="button"
                     onClick={() => setLightboxIndex(null)}
-                    className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-50"
+                    className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-black/70"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="w-5 h-5" />
                   </button>
-
-                  {/* Image */}
-                  <div className="relative w-full h-[60vh] rounded-lg overflow-hidden shadow-lg">
+                  <div className="relative w-full h-[70vh] rounded-xl overflow-hidden">
                     <Image
                       src={project.screenshots[lightboxIndex].src}
-                      alt={project.screenshots[lightboxIndex].alt || "Screenshot"}
+                      alt={project.title}
                       fill
                       className="object-contain"
                     />
                   </div>
-
-                  {/* Navigation arrows */}
                   {lightboxIndex > 0 && (
                     <button
-                      type="button"
                       onClick={() => setLightboxIndex(lightboxIndex - 1)}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
                     >
-                      <ChevronLeft className="h-6 w-6" />
+                      <ChevronLeft className="w-6 h-6" />
                     </button>
                   )}
                   {lightboxIndex < project.screenshots.length - 1 && (
                     <button
-                      type="button"
                       onClick={() => setLightboxIndex(lightboxIndex + 1)}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70"
                     >
-                      <ChevronRight className="h-6 w-6" />
+                      <ChevronRight className="w-6 h-6" />
                     </button>
                   )}
                 </motion.div>
@@ -204,48 +207,46 @@ export default function ProjectDetailsPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-
-
-      {/* Description */}
-      <section className="max-w-7xl mx-auto px-4 pb-20">
-        <motion.div className="rounded-xl border bg-white/40 dark:bg-gray-900/40 backdrop-blur-md shadow-md p-6 md:p-8">
-          <h2 className="text-xl font-semibold">Overview</h2>
-          <motion.p className="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed">
-            {project.longDescription || "This project highlights a modern, clean design with responsive layout, light/dark mode support, and elegant transitions."}
-          </motion.p>
+      {/* 🧩 Overview */}
+      <section className="max-w-6xl mx-auto px-4 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="p-8 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg shadow-md"
+        >
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Overview</h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {project.longDescription ||
+              "This project showcases a blend of performance, elegant design, and seamless interaction between backend and frontend."}
+          </p>
         </motion.div>
       </section>
 
-
-      {/* Navigation buttons */}
-      <section className="max-w-7xl mx-auto px-4 pb-20">
+      {/* 🧭 Navigation */}
+      <section className="max-w-6xl mx-auto px-4 pb-20">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
-          {/* Previous project */}
           <Link
             href={`/projects/${projects[projects.indexOf(project) - 1]?.slug || ""}`}
-            className={`flex-1 text-center px-6 py-4 rounded-xl border border-gray-300/50 dark:border-gray-700/50 
-      bg-white/20 dark:bg-gray-900/30 backdrop-blur-md 
-      text-gray-800 dark:text-gray-200 font-medium text-lg 
-      transition-all duration-300 hover:scale-[1.02] hover:bg-white/40 dark:hover:bg-gray-800/50 
-      ${projects.indexOf(project) === 0 ? "pointer-events-none opacity-40" : ""}`}
+            className={`flex-1 text-center px-6 py-4 rounded-xl border border-gray-300/50 dark:border-gray-700/50 bg-white/20 dark:bg-gray-900/30 text-gray-800 dark:text-gray-200 font-medium hover:scale-[1.03] hover:bg-indigo-100/30 dark:hover:bg-indigo-900/30 transition-all ${
+              projects.indexOf(project) === 0 ? "pointer-events-none opacity-40" : ""
+            }`}
           >
             ← Previous Project
           </Link>
-
-          {/* Next project */}
           <Link
             href={`/projects/${projects[projects.indexOf(project) + 1]?.slug || ""}`}
-            className={`flex-1 text-center px-6 py-4 rounded-xl border border-gray-300/50 dark:border-gray-700/50 
-      bg-white/20 dark:bg-gray-900/30 backdrop-blur-md 
-      text-gray-800 dark:text-gray-200 font-medium text-lg 
-      transition-all duration-300 hover:scale-[1.02] hover:bg-white/40 dark:hover:bg-gray-800/50 
-      ${projects.indexOf(project) === projects.length - 1 ? "pointer-events-none opacity-40" : ""}`}
+            className={`flex-1 text-center px-6 py-4 rounded-xl border border-gray-300/50 dark:border-gray-700/50 bg-white/20 dark:bg-gray-900/30 text-gray-800 dark:text-gray-200 font-medium hover:scale-[1.03] hover:bg-indigo-100/30 dark:hover:bg-indigo-900/30 transition-all ${
+              projects.indexOf(project) === projects.length - 1
+                ? "pointer-events-none opacity-40"
+                : ""
+            }`}
           >
             Next Project →
           </Link>
         </div>
       </section>
-
     </main>
   );
 }
