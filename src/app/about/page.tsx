@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
+import ScrollDownButton from "@/components/ScrollDownButton";
 
 function MyJourneySection({
   timeline,
@@ -17,11 +18,11 @@ function MyJourneySection({
     filter === "all" ? timeline : timeline.filter((item) => item.type === filter);
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Фон с мягким свечением */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-100/20 via-transparent to-purple-100/10 dark:from-indigo-900/10 dark:to-purple-900/20 blur-3xl" />
+    <section className="relative py-28 overflow-hidden bg-gradient-to-b from-gray-100/30 to-white dark:from-gray-900/50 dark:to-black">
+      {/* Мягкий фон */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.07),transparent_70%)] blur-3xl" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
         {/* Заголовок */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,7 +30,7 @@ function MyJourneySection({
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             My Journey
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-3 text-base max-w-xl mx-auto">
@@ -43,12 +44,11 @@ function MyJourneySection({
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`capitalize px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300
-                ${
-                  filter === f
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
-                    : "bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100/20 dark:hover:bg-gray-800/40"
-                }`}
+              className={`capitalize px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                filter === f
+                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
+                  : "bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100/20 dark:hover:bg-gray-800/40"
+              }`}
             >
               {f}
             </button>
@@ -106,14 +106,13 @@ export default function AboutPage() {
   const content = data[0];
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-black dark:via-gray-950 dark:to-gray-900 mt-20">
       {/* === Hero === */}
-      <section className="relative py-24 sm:py-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-black">
-        {/* Эффект подсветки */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent blur-2xl" />
+      <section className="relative py-28 sm:py-36">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.1),_transparent_70%)] blur-2xl" />
 
         <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          {/* Фото с эффектом парения */}
+          {/* Фото */}
           <motion.div
             initial={{ rotate: -5, opacity: 0 }}
             whileInView={{ rotate: 0, opacity: 1 }}
@@ -125,12 +124,7 @@ export default function AboutPage() {
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
               className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-md"
             >
-              <Image
-                src={content.image}
-                alt={content.alt}
-                fill
-                className="object-cover"
-              />
+              <Image src={content.image} alt={content.alt} fill className="object-cover" />
             </motion.div>
           </motion.div>
 
@@ -155,43 +149,50 @@ export default function AboutPage() {
         </div>
       </section>
 
+        
+      {/* === Smooth Transition === */}
+      <div className="h-32 bg-gradient-to-b from-gray-50/0 via-gray-100/50 to-gray-100 dark:from-gray-900/0 dark:via-gray-900/50 dark:to-black blur-3xl" />
+
       {/* === About Me === */}
-      <section className="relative py-28 bg-gradient-to-b from-white via-blue-50/30 to-purple-50/20 dark:from-gray-950 dark:via-gray-900 dark:to-black">
+      <section className="relative py-28">
+        
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent mb-6"
+            className="text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent mb-6"
           >
             About Me
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl mb-12 max-w-3xl mx-auto"
+            className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mb-12 max-w-3xl mx-auto"
           >
-            A quick look into my journey, skills, and passion for building modern digital solutions.
+            I’m a backend developer focused on building reliable, scalable, and intelligent systems with a touch of creativity.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 shadow-2xl rounded-3xl p-10 mb-16"
+            transition={{ duration: 0.8 }}
+            className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 rounded-3xl shadow-xl p-10 mb-16"
           >
-            <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-6 text-lg">
+            <div className="text-gray-800 dark:text-gray-300 leading-relaxed space-y-6 text-lg text-left sm:text-center">
               <p>
-                I am a <b>software developer</b> passionate about creating scalable, secure, and maintainable software solutions using{" "}
-                <b>Python, Django, and DRF</b>.
+                Hey, I’m <b>Akrom Rustamov</b> — a passionate <b>backend developer</b> who loves transforming raw ideas into reliable, scalable, and intelligent systems.
               </p>
               <p>
-                My curiosity drives me to explore <b>frontend frameworks like React and Next.js</b> to build smooth and beautiful full-stack experiences.
+                I specialize in <b>Python</b>, <b>Django</b>, and <b>DRF</b>, creating solutions that are clean, secure, and built to last. Curiosity drives me to explore <b>AI technologies</b> and <b>frontend frameworks</b> like React and Next.js to deliver full-stack experiences.
               </p>
               <p>
-                I thrive on challenges, love crafting <b>clean architecture</b>, and believe technology should make life simpler, not harder.
+                For me, writing code isn’t just about solving problems — it’s about designing digital logic that feels alive. Every project I build reflects a balance between <b>architecture</b>, <b>performance</b>, and <b>human experience</b>.
+              </p>
+              <p className="italic text-gray-500 dark:text-gray-400">
+                “I don’t just build apps — I build systems that think, adapt, and evolve.”
               </p>
             </div>
           </motion.div>
@@ -204,9 +205,9 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: stat.id * 0.1 }}
-                className="flex flex-col gap-y-1 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md border border-gray-200/30 dark:border-gray-700/30 rounded-xl p-5 shadow-sm hover:shadow-lg"
+                className="flex flex-col gap-y-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-200/30 dark:border-gray-700/30 rounded-xl p-5 shadow-sm hover:shadow-md transition"
               >
-                <dd className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                <dd className="text-3xl font-bold bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
                   {stat.value}
                 </dd>
                 <dt className="text-gray-600 dark:text-gray-400 text-sm">{stat.name}</dt>
@@ -219,7 +220,7 @@ export default function AboutPage() {
             <motion.a
               href="/contact"
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium shadow hover:shadow-lg transition"
+              className="px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium shadow hover:shadow-lg transition"
             >
               Let’s connect
             </motion.a>
@@ -227,13 +228,16 @@ export default function AboutPage() {
               href="/resumes/resume-1.pdf"
               download
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-300 hover:bg-gray-100/30 dark:hover:bg-gray-800/40 transition"
+              className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-300 hover:bg-gray-100/20 dark:hover:bg-gray-800/40 transition"
             >
               Download CV
             </motion.a>
           </div>
         </div>
       </section>
+
+      {/* === Smooth Transition to Timeline === */}
+      <div className="h-32 bg-gradient-to-b from-gray-100/0 via-gray-100/50 to-white dark:from-gray-900/0 dark:via-gray-900/50 dark:to-black blur-3xl" />
 
       {/* === Timeline === */}
       <MyJourneySection timeline={content.timeline} filters={content.filters} />

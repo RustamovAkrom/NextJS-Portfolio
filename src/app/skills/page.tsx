@@ -93,7 +93,7 @@ export default function Skills() {
   const visibleSkills = showAll ? data.progressSkills : data.progressSkills.slice(0, 6);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-20">
       {/* Фон с плавным градиентом */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-indigo-50/40 to-white dark:from-gray-900 dark:via-gray-950/60 dark:to-gray-900 -z-10" />
 

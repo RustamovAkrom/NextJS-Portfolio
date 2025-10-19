@@ -161,7 +161,7 @@ function SendMessageForm() {
 // ✅ Главная страница
 export default function ContactPage() {
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="relative overflow-hidden py-20 mt-20">
       {/* 🔹 Фон */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-indigo-100 
                       dark:from-gray-900 dark:via-gray-950 dark:to-gray-900" />

@@ -22,7 +22,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="relative overflow-hidden py-20 mt-20">
       {/* 🔹 Градиентный фон с мягким свечением */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900" />
       <div className="absolute -top-20 left-1/2 w-[600px] h-[600px] bg-indigo-400/20 dark:bg-indigo-600/20 rounded-full blur-3xl -translate-x-1/2" />

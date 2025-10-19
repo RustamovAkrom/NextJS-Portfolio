@@ -36,7 +36,7 @@ export default function ProjectsPage() {
       : projects.filter((p) => p.date.startsWith(filterYear));
 
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden mt-20">
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-transparent to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-black" />
       <motion.div
