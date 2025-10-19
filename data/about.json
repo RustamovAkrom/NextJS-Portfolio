@@ -71,9 +71,19 @@
                 "role": "Backend Developer Program",
                 "company": "Najot Ta'lim",
                 "period": "2023-Aug - 2024-Jul",
-                "description": "Completed a 1-year intensive backend development program with Python, Django, REST API design, and deployment practices.",
+                "description": "Completed a 1-year intensive backend development program focused on Python, Django, REST API design, and deployment practices.",
                 "icon": "🎓"
+            },
+            {
+                "type": "education",
+                "role": "Foundation Degree",
+                "company": "International Digital University (IDU)",
+                "period": "2025-Sep - Present",
+                "description": "Currently studying at IDU in the Foundation program, covering key subjects such as Professional English, Business Management, Professional Mathematics, Japanese Language, and Programming with C++.",
+                "icon": "🏫"
             }
+
+
         ]
     }
 ]
