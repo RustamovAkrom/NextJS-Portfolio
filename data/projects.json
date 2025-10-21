@@ -20,12 +20,12 @@
         ]
     },
     {
-    "title": "Голосовой ассистент Джарвис",
+    "title": "Voice Assistant For Windows",
     "description": "Интеллектуальный голосовой ассистент, созданный на Python. Поддерживает распознавание и синтез речи, управление системой, работу с интернетом и интеграцию с различными библиотеками.",
     "longDescription": "Этот проект представляет собой интеллектуального голосового ассистента, разработанного на Python. Ассистент способен распознавать и синтезировать речь, что позволяет ему взаимодействовать с пользователем на естественном языке. Он может выполнять различные задачи, включая управление системой (открытие приложений, управление файлами), работу с интернетом (поиск информации, отправка сообщений) и интеграцию с различными библиотеками для расширения своих возможностей. Проект использует такие библиотеки, как SpeechRecognition для распознавания речи, Pyttsx3 для синтеза речи, а также Requests и BeautifulSoup4 для работы с веб-контентом. Ассистент также поддерживает функции управления звуком и мониторинга системы с помощью PyCaw и Psutil. Этот проект демонстрирует потенциал использования Python для создания сложных и полезных приложений в области искусственного интеллекта и обработки естественного языка.",
     "image": "/projects/project_2/banner.webp",
-    "slug": "voice-assistant-jarvis",
-    "github": "https://github.com/RustamovAkrom/Jarvis", 
+    "slug": "voice-assistent-for-windows",
+    "github": "https://github.com/RustamovAkrom/Voices-Assistant-For-Windows", 
     "deploy": null,
     "date": "2025-09-02",
     "technologies": [
@@ -34,17 +34,25 @@
       "Vosk",
       "Pyttsx3",
       "PyAutoGUI",
-      "Requests",
-      "BeautifulSoup4",
-      "WebSockets",
-      "Wikipedia",
-      "PyCaw",
-      "Psutil"
+      "torch",
+      "numpy",
+      "Socket",
+      "pyYAML",
+      "gTTS",
+      "uv",
+      "playsound",
+      "langdetect",
+      "soundfile",
+      "RapidFuzz"
     ],
     "screenshots": [
-      { "src": "/projects/project_2/banner.png", "alt": "Jarvis Banner" },
-      { "src": "/projects/project_2/folder-structure.png", "alt": "Структура проекта" },
-      { "src": "/projects/project_2/running.png", "alt": "Демонстрация распознавания речи" }
+      { "src": "/projects/project_2/basic_opportunities.png", "alt": "Opportunities (basic)" },
+      { "src": "/projects/project_2/example.png", "alt": "banner" },
+      { "src": "/projects/project_2/structure.png", "alt": "structure" },
+      { "src": "/projects/project_2/requirements.png", "alt": "requirements" },
+      { "src": "/projects/project_2/config.png", "alt": "config" },
+      { "src": "/projects/project_2/install_and_run.png", "alt": "installing and running" },
+      { "src": "/projects/project_2/warnings.png", "alt": "warnings" }
     ]
   },
   {
