@@ -36,84 +36,93 @@ export default function ProjectsPage() {
       : projects.filter((p) => p.date.startsWith(filterYear));
 
   return (
-    <main className="min-h-screen">
+    <main className="relative min-h-screen overflow-hidden mt-20">
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-transparent to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-black" />
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={{ background: "radial-gradient(circle at 50% 20%, rgba(79,70,229,0.15), transparent 70%)" }}
+      />
+
       {/* Header Section */}
-      <section className="py-16 lg:py-24 text-center px-4 sm:px-6 lg:px-8">
+      <section className="py-20 lg:py-28 text-center px-4 sm:px-6 lg:px-8 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100/50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-sm font-medium">
-            My Work
+          <div className="inline-flex items-center px-4 py-1 rounded-full bg-indigo-100/60 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-sm font-medium shadow-sm">
+            ✨ My Work
           </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">
-            Featured{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">Projects</span>
+          <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+              Creative Projects
+            </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
-            A curated list of my projects showcasing modern web applications,
-            clean UIs, and creative ideas.
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+            A showcase of my best web applications — where design meets performance and creativity.
           </p>
         </motion.div>
       </section>
 
-      {/* Filter */}
-      <div className="max-w-4xl mx-auto px-4 mb-10 flex flex-wrap justify-center gap-3">
+      {/* Filter Buttons */}
+      <div className="max-w-4xl mx-auto px-4 mb-12 flex flex-wrap justify-center gap-3">
         {["all", ...years].map((year) => (
           <motion.button
-            whileTap={{ scale: 0.95 }}
             key={year}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            className={`px-5 py-1.5 rounded-full text-sm font-medium transition-all ${
               filterYear === year
-                ? "bg-indigo-500 text-white shadow-sm"
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md"
                 : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40"
             }`}
             onClick={() => setFilterYear(year)}
           >
-            {year === "all" ? "All" : year}
+            {year === "all" ? "All Projects" : year}
           </motion.button>
         ))}
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 pb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 pb-28">
         <AnimatePresence>
           {loading
             ? Array.from({ length: 6 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="h-64 rounded-lg bg-gray-200 dark:bg-gray-800 animate-pulse"
+                  className="h-72 rounded-xl bg-gray-200 dark:bg-gray-800 animate-pulse"
                 />
               ))
             : filteredProjects.map((project, idx) => (
                 <motion.div
                   key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.08 }}
-                  className="group flex flex-col rounded-xl border border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="group relative flex flex-col rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Image */}
-                  <div className="relative w-full h-44 sm:h-52 overflow-hidden">
+                  <div className="relative w-full h-48 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       priority={idx === 0}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-col flex-1 p-4 sm:p-5">
-                    <h2 className="text-indigo-600 dark:text-indigo-400 font-semibold text-lg mb-1">
+                  <div className="flex flex-col flex-1 p-5 relative z-10">
+                    <h2 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
                       {project.title}
                     </h2>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 group-hover:line-clamp-3 transition-all duration-300 mb-3">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 group-hover:line-clamp-4 transition-all duration-300 mb-3">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
@@ -129,7 +138,7 @@ export default function ProjectsPage() {
                     <div className="mt-auto flex gap-2">
                       <Link
                         href={`projects/${project.slug}`}
-                        className="flex-1 text-center py-2 rounded-md bg-indigo-500/90 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-sm font-medium transition-colors"
+                        className="flex-1 text-center py-2 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-medium hover:opacity-90 transition"
                       >
                         Details
                       </Link>
@@ -159,18 +168,18 @@ export default function ProjectsPage() {
       </div>
 
       {/* Mention Section */}
-      <div className="max-w-4xl mx-auto px-4 pb-14 text-center">
+      <div className="max-w-4xl mx-auto px-4 pb-20 text-center">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-6" />
         <p className="text-gray-500 dark:text-gray-400 text-sm">
-          All projects are open-source on my{" "}
+          💡 All projects are open-source on{" "}
           <Link
             href="https://github.com/rustamovakrom"
             target="_blank"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-500 dark:text-indigo-400 hover:underline"
           >
             GitHub
           </Link>
-          . Feel free to explore, contribute, or reach out for collaboration!
+          . Feel free to explore, contribute, or collaborate!
         </p>
       </div>
     </main>

@@ -5,7 +5,6 @@
         "icon": "Database",
         "title": "Backend & Databases",
         "items": [
-          "FastAPI",
           "Django DRF",
           "PostgreSQL",
           "Redis",
@@ -43,21 +42,23 @@
     ],
     "progressSkills": [
       { "name": "Python", "level": 100 },
+      { "name": "C++", "level": 40 },
+      { "name": "JavaScript", "level": 50 },
       { "name": "Django", "level": 100 },
       { "name": "DRF", "level": 100 },
+      { "name": "Docker", "level": 80 },
       { "name": "Flask", "level": 90 },
       { "name": "FastAPI", "level": 85 },
-      { "name": "Telebot", "level": 46 },
       { "name": "Aiogram", "level": 96 },
-      { "name": "Git", "level": 100 },
+      { "name": "GitHub", "level": 100 },
+      { "name": "Redis", "level": 100 },
+      { "name": "Celery", "level": 100 },
       { "name": "Linux", "level": 79 },
       { "name": "PostgreSQL", "level": 95 },
       { "name": "Next.JS", "level": 85 },
       { "name": "React.JS", "level": 80 },
-      { "name": "Node.JS", "level": 82 },
       { "name": "Tailwind CSS", "level": 80 },
-      { "name": "CSS", "level": 45 },
-      { "name": "NGINX", "level": 87 },
+      { "name": "NGINX", "level": 90 },
       { "name": "GraphQL", "level": 58 }
     ]
   }
