@@ -148,7 +148,21 @@
     "TypeScript",
     "ESLint"  
   ],
-  "screenshots": []
+  "screenshots": [
+    {"src": "/projects/project_6/home-dark.webp", "alt": "home dark"},
+    {"src": "/projects/project_6/tracks-light.webp", "alt": "tracks light"},
+    {"src": "/projects/project_6/tracks-dark.webp", "alt": "tracks dark"},
+    {"src": "/projects/project_6/track-detail-light.webp", "alt": "track detail light"},
+    {"src": "/projects/project_6/track-detail-dark.webp", "alt": "track detail dark"},
+    {"src": "/projects/project_6/artists-light.webp", "alt": "artists light"},
+    {"src": "/projects/project_6/artists-dark.webp", "alt": "artists dark"},
+    {"src": "/projects/project_6/albums-light.webp", "alt": "albums light"},
+    {"src": "/projects/project_6/albums-dark.webp", "alt": "albums dark"},
+    {"src": "/projects/project_6/profile-light.webp", "alt": "profile light"},
+    {"src": "/projects/project_6/profile-dark.webp", "alt": "profile dark"},
+    {"src": "/projects/project_6/home-light.webp", "alt": "home light"}
+
+  ]
 }
 
 
