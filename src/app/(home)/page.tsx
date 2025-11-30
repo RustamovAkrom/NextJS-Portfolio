@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <main>
       {/* === Hero Section === */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center md:flex-row max-w-7xl mx-auto px-6 sm:px-8 gap-10">
+      <section className="relative min-h-screen flex flex-col justify-center items-center md:flex-row max-w-7xl mx-auto px-6 sm:px-8 gap-16">
         {/* Текст */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -115,7 +115,7 @@ export default function Home() {
                 width={320}
                 height={320}
                 priority
-                className="rounded-full object-cover w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 shadow-lg cursor-pointer"
+                className="rounded-full object-cover w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 shadow-lg cursor-pointer"
               />
             </motion.div>
           </AnimatePresence>

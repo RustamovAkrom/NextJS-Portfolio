@@ -5,10 +5,12 @@
         "icon": "Database",
         "title": "Backend & Databases",
         "items": [
-          "Django DRF",
+          "Django ( DRF )",
+          "FastAPI",
+          "Aiogram",
           "PostgreSQL",
-          "Redis",
-          "Celery"
+          "Python",
+          "C++"
         ]
       },
       {
@@ -16,8 +18,11 @@
         "title": "DevOps & Tools",
         "items": [
           "Docker",
-          "GitHub Actions",
-          "Nginx"
+          "Linux",
+          "GitHub",
+          "Nginx",
+          "Redis",
+          "Celery"
         ]
       },
       {
@@ -33,9 +38,6 @@
         "title": "Design & Styling",
         "items": [
           "Tailwind CSS",
-          "Bootstrap",
-          "Figma",
-          "Framer Motion",
           "Canva"
         ]
       }
@@ -43,23 +45,19 @@
     "progressSkills": [
       { "name": "Python", "level": 100 },
       { "name": "C++", "level": 40 },
-      { "name": "JavaScript", "level": 50 },
-      { "name": "Django", "level": 100 },
-      { "name": "DRF", "level": 100 },
-      { "name": "Docker", "level": 80 },
-      { "name": "Flask", "level": 90 },
-      { "name": "FastAPI", "level": 85 },
-      { "name": "Aiogram", "level": 96 },
+      { "name": "Django ( DRF )", "level": 100 },
+      { "name": "Docker", "level": 100 },
+      { "name": "FastAPI", "level": 100 },
+      { "name": "Aiogram", "level": 100 },
       { "name": "GitHub", "level": 100 },
       { "name": "Redis", "level": 100 },
       { "name": "Celery", "level": 100 },
-      { "name": "Linux", "level": 79 },
-      { "name": "PostgreSQL", "level": 95 },
-      { "name": "Next.JS", "level": 85 },
+      { "name": "Linux", "level": 80 },
+      { "name": "PostgreSQL", "level": 100 },
+      { "name": "Next.JS", "level": 80 },
       { "name": "React.JS", "level": 80 },
-      { "name": "Tailwind CSS", "level": 80 },
-      { "name": "NGINX", "level": 90 },
-      { "name": "GraphQL", "level": 58 }
+      { "name": "Tailwind CSS", "level": 70 },
+      { "name": "NGINX", "level": 100 }
     ]
   }
 ]
