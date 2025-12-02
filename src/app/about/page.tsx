@@ -44,11 +44,10 @@ function MyJourneySection({
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`capitalize px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                filter === f
+              className={`capitalize px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${filter === f
                   ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
                   : "bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100/20 dark:hover:bg-gray-800/40"
-              }`}
+                }`}
             >
               {f}
             </button>
@@ -149,13 +148,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-        
+
       {/* === Smooth Transition === */}
       <div className="h-32 bg-gradient-to-b from-gray-50/0 via-gray-100/50 to-gray-100 dark:from-gray-900/0 dark:via-gray-900/50 dark:to-black blur-3xl" />
 
       {/* === About Me === */}
       <section className="relative py-28">
-        
+
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
@@ -166,15 +165,6 @@ export default function AboutPage() {
             About Me
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl mb-12 max-w-3xl mx-auto"
-          >
-            I’m a backend developer focused on building reliable, scalable, and intelligent systems with a touch of creativity.
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -182,20 +172,41 @@ export default function AboutPage() {
             className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 rounded-3xl shadow-xl p-10 mb-16"
           >
             <div className="text-gray-800 dark:text-gray-300 leading-relaxed space-y-6 text-lg text-left sm:text-center">
+
               <p>
-                Hey, I’m <b>Akrom Rustamov</b> — a passionate <b>backend developer</b> who loves transforming raw ideas into reliable, scalable, and intelligent systems.
+                I’m a <b>Backend Developer</b> passionate about building systems that don’t just work —
+                they scale, evolve, and stay maintainable for years.
               </p>
+
               <p>
-                I specialize in <b>Python</b>, <b>Django</b>, and <b>DRF</b>, creating solutions that are clean, secure, and built to last. Curiosity drives me to explore <b>AI technologies</b> and <b>frontend frameworks</b> like React and Next.js to deliver full-stack experiences.
+                I specialize in <b>Python</b>, <b>FastAPI</b>, <b>Django</b>, <b>PostgreSQL</b>, <b>Docker</b>,
+                and designing backend architectures that feel clean, efficient, and predictable.
               </p>
+
               <p>
-                For me, writing code isn’t just about solving problems — it’s about designing digital logic that feels alive. Every project I build reflects a balance between <b>architecture</b>, <b>performance</b>, and <b>human experience</b>.
+                What drives me most is the craft of transforming complex requirements into elegant,
+                production-ready solutions. I love creating services that are fast, secure, fault-tolerant,
+                and easy for teams to build on top of.
               </p>
+
+              <p>
+                I combine engineering discipline with product-oriented thinking — focusing not only on
+                code quality, but also on real user value, technical clarity, and long-term stability.
+              </p>
+
+              <p>
+                Today, I’m actively leveling up toward a strong Middle Developer role: mastering architecture
+                patterns, writing testable modular code, and contributing to meaningful products that help
+                businesses grow.
+              </p>
+
               <p className="italic text-gray-500 dark:text-gray-400">
-                “I don’t just build apps — I build systems that think, adapt, and evolve.”
+                I don’t just write backend code — I build systems that stay strong and reliable as they grow.
               </p>
+
             </div>
           </motion.div>
+
 
           {/* Статистика */}
           <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
