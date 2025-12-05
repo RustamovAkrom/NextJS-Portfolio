@@ -1,46 +1,5 @@
 [
   {
-    "title": "Next.JS Portfolio",
-    "description": "Personal portfolio maked with Next.JS integration with dark and light modes, white beauteful style and components.",
-    "image": "/projects/project_1/banner.webp",
-    "slug": "nextjs-portfolio",
-    "github": "https://github.com/RustamovAkrom/NextJS-Portfolio",
-    "deploy": "https://akrom-omega.vercel.app/",
-    "date": "2025-09-02",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "TailwindCSS"
-    ],
-    "screenshots": [
-      {
-        "src": "/projects/project_1/home-dark.png"
-      },
-      {
-        "src": "/projects/project_1/home-light.png"
-      },
-      {
-        "src": "/projects/project_1/about-dark.png"
-      },
-      {
-        "src": "/projects/project_1/about-light.png"
-      },
-      {
-        "src": "/projects/project_1/contact-dark.png"
-      },
-      {
-        "src": "/projects/project_1/contact-light.png"
-      },
-      {
-        "src": "/projects/project_1/skills-dark.png"
-      },
-      {
-        "src": "/projects/project_1/skills-light.png"
-      }
-    ]
-  },
-  {
     "title": "Voice Assistant For Windows",
     "description": "Интеллектуальный голосовой ассистент, созданный на Python. Поддерживает распознавание и синтез речи, управление системой, работу с интернетом и интеграцию с различными библиотеками.",
     "longDescription": "Этот проект представляет собой интеллектуального голосового ассистента, разработанного на Python. Ассистент способен распознавать и синтезировать речь, что позволяет ему взаимодействовать с пользователем на естественном языке. Он может выполнять различные задачи, включая управление системой (открытие приложений, управление файлами), работу с интернетом (поиск информации, отправка сообщений) и интеграцию с различными библиотеками для расширения своих возможностей. Проект использует такие библиотеки, как SpeechRecognition для распознавания речи, Pyttsx3 для синтеза речи, а также Requests и BeautifulSoup4 для работы с веб-контентом. Ассистент также поддерживает функции управления звуком и мониторинга системы с помощью PyCaw и Psutil. Этот проект демонстрирует потенциал использования Python для создания сложных и полезных приложений в области искусственного интеллекта и обработки естественного языка.",
