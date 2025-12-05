@@ -236,7 +236,7 @@ export default function AboutPage() {
               Let’s connect
             </motion.a>
             <motion.a
-              href="/resumes/resume-1.pdf"
+              href="/resumes/Akrom Rustamov.pdf"
               download
               whileHover={{ scale: 1.05 }}
               className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-300 hover:bg-gray-100/20 dark:hover:bg-gray-800/40 transition"
