@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut,easeInOut } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { HomeContentType } from "@/types/home";
@@ -10,12 +10,12 @@ import { ChevronDown } from "lucide-react";
 
 const underlineVariants = {
   hidden: { width: 0 },
-  visible: { width: "100%", transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { width: "100%", transition: { duration: 0.8, ease: easeOut } },
 };
 
 const badgeFloat = (delay = 0) => ({
   y: ["0%", "-8%", "0%"],
-  transition: { delay, duration: 2.6 + delay, repeat: Infinity, ease: "easeInOut" },
+  transition: { delay, duration: 2.6 + delay, repeat: Infinity, ease: easeInOut },
 });
 
 // ScrollDownButton встроенный

@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, easeInOut } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
-import ScrollDownButton from "@/components/ScrollDownButton";
 
 function MyJourneySection({
   timeline,
@@ -120,7 +119,7 @@ export default function AboutPage() {
           >
             <motion.div
               animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              transition={{ repeat: Infinity, duration: 6, ease: easeInOut }}
               className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-md"
             >
               <Image src={content.image} alt={content.alt} fill className="object-cover" />
