@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://akrom-omega.vercel.app
+
+# Sitemaps
+Sitemap: https://akrom-omega.vercel.app/sitemap.xml

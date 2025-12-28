@@ -1,107 +1,110 @@
 "use client";
 
-import { useState } from "react";
-import { Dialog } from "@headlessui/react";
+import { useState, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import NavLink from "./NavLinks";
 import { siteConfig } from "@/config/site";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/40 dark:bg-gray-900/40 backdrop-blur-lg border-b border-white/20 dark:border-gray-700/30 shadow-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-gray-200/40 dark:border-gray-800/40">
+      <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         
-        {/* Лого */}
-        <div className="flex items-center flex-shrink-0">
-          <Link
-            href="/"
-            className="group flex items-center gap-2 font-semibold"
-          >
-            <Sparkles className="w-5 h-5 text-indigo-500 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-6 transition-transform" />
-            <span className="text-base sm:text-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 bg-clip-text text-transparent group-hover:opacity-90 transition">
-              {siteConfig.name}
-              <span className="text-gray-800 dark:text-gray-100 font-light">
-                .Dev
-              </span>
-            </span>
-          </Link>
-        </div>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-lg sm:text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+          aria-label={`${siteConfig.name} home`}
+        >
+          {siteConfig.name}
+          <span className="font-light text-gray-400">.dev</span>
+        </Link>
 
-        {/* Навигация (desktop) */}
-        <div className="hidden lg:flex lg:gap-x-10">
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center gap-6">
           {siteConfig.navLinks.map(({ label, href }) => (
             <NavLink key={href} href={href} label={label} />
           ))}
         </div>
 
-        {/* Тема + меню */}
-        <div className="flex items-center gap-3">
+        {/* Actions */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition lg:hidden"
+            className="lg:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            aria-label="Open menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </nav>
 
-      {/* Мобильное меню */}
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-        className="lg:hidden"
-      >
-        <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity" />
+      {/* Mobile menu */}
+      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Transition.Child
+          as={Fragment}
+          enter="transition-opacity duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/40" />
+        </Transition.Child>
 
-        <Dialog.Panel className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-xs bg-white/90 dark:bg-gray-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-md transition-all border-l border-white/20 dark:border-gray-800/30">
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-base font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-              {siteConfig.name}.Dev
-            </span>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 transition"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
+        <Transition.Child
+          as={Fragment}
+          enter="transition-transform duration-300 ease-out"
+          enterFrom="translate-x-full"
+          enterTo="translate-x-0"
+          leave="transition-transform duration-200 ease-in"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-full"
+        >
+          <Dialog.Panel className="fixed right-0 top-0 h-full w-full max-w-sm bg-white dark:bg-black p-5 sm:p-6">
+            
+            {/* Mobile header */}
+            <div className="flex items-center justify-between mb-8 sm:mb-10">
+              <span className="text-lg sm:text-xl font-semibold">
+                {siteConfig.name}
+                <span className="font-light text-gray-400">.dev</span>
+              </span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
               >
-                <path
-                  d="M6 18 18 6M6 6l12 12"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            </div>
 
-          <nav className="flex flex-col mt-6 space-y-4">
-            {siteConfig.navLinks.map(({ label, href }) => (
-              <NavLink key={href} href={href} label={label} />
-            ))}
-          </nav>
-        </Dialog.Panel>
+            {/* Links */}
+            <nav className="space-y-5 sm:space-y-6">
+              {siteConfig.navLinks.map(({ label, href }, idx) => (
+                <motion.div
+                  key={href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.06 }}
+                >
+                  <NavLink
+                    href={href}
+                    label={label}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white"
+                  />
+                </motion.div>
+              ))}
+            </nav>
+          </Dialog.Panel>
+        </Transition.Child>
       </Dialog>
     </header>
   );

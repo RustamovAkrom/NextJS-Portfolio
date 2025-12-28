@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
-import ScrollDownButton from "@/components/ScrollDownButton";
+import type { AboutContentType, TimelineItemType, StatType } from "@/types/about";
 
 function MyJourneySection({
   timeline,
@@ -45,8 +44,8 @@ function MyJourneySection({
               key={f}
               onClick={() => setFilter(f)}
               className={`capitalize px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${filter === f
-                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
-                  : "bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100/20 dark:hover:bg-gray-800/40"
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
+                : "bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100/20 dark:hover:bg-gray-800/40"
                 }`}
             >
               {f}
@@ -107,60 +106,54 @@ export default function AboutPage() {
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-black dark:via-gray-950 dark:to-gray-900 mt-20">
       {/* === Hero === */}
-      <section className="relative py-28 sm:py-36">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.1),_transparent_70%)] blur-2xl" />
+      <section className="relative py-32">
+        <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 
-        <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          {/* Фото */}
+          {/* Text */}
           <motion.div
-            initial={{ rotate: -5, opacity: 0 }}
-            whileInView={{ rotate: 0, opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex justify-center"
+            className="space-y-6"
           >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-md"
-            >
-              <Image src={content.image} alt={content.alt} fill className="object-cover" />
-            </motion.div>
+            <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">
+              <span className="block text-gray-900 dark:text-white">
+                Hi, I`m Akrom Rustamov
+              </span>
+              <span className="block text-gray-400">
+                Backend Engineer
+              </span>
+            </h1>
+
+            <p className="max-w-md text-gray-600 dark:text-gray-400 text-lg">
+              I design scalable backend systems with clean architecture
+              and production mindset.
+            </p>
           </motion.div>
 
-          {/* Ссылки */}
-          <div className="grid sm:grid-cols-2 gap-5">
-            {content.links.map((link: LinkType, idx: number) => (
-              <motion.a
-                key={idx}
-                href={link.href}
-                whileHover={{ scale: 1.05, y: -3 }}
-                className="block rounded-xl bg-gradient-to-br from-white/40 to-white/10 dark:from-gray-800/40 dark:to-gray-900/30 backdrop-blur-lg border border-gray-200/30 dark:border-gray-700/40 p-5 shadow-sm hover:shadow-md transition-all"
-              >
-                <h3 className="text-base font-semibold mb-1 text-gray-900 dark:text-white">
-                  {link.name}
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-xs">
-                  Learn more about {link.name.toLowerCase()}.
-                </p>
-              </motion.a>
-            ))}
-          </div>
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-72 h-72 sm:w-80 sm:h-80 mx-auto rounded-2xl overflow-hidden"
+          >
+            <Image src={content.image} alt={content.alt} fill className="object-cover" />
+          </motion.div>
         </div>
       </section>
-
 
       {/* === Smooth Transition === */}
       <div className="h-32 bg-gradient-to-b from-gray-50/0 via-gray-100/50 to-gray-100 dark:from-gray-900/0 dark:via-gray-900/50 dark:to-black blur-3xl" />
 
       {/* === About Me === */}
       <section className="relative py-28">
-
-        <div className="max-w-5xl mx-auto px-6 text-center">
+        <div className="max-w-3xl sm:max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent mb-6"
+            className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent mb-6 leading-tight"
           >
             About Me
           </motion.h2>
@@ -169,69 +162,53 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 rounded-3xl shadow-xl p-10 mb-16"
+            className="bg-white/20 dark:bg-gray-900/20 backdrop-blur-md border border-gray-200/10 dark:border-gray-700/10 rounded-3xl shadow-md sm:shadow-lg p-6 sm:p-10 mb-16"
           >
-            <div className="text-gray-800 dark:text-gray-300 leading-relaxed space-y-6 text-lg text-left sm:text-center">
-
+            <div className="text-gray-800 dark:text-gray-300 leading-relaxed space-y-4 sm:space-y-6 text-base sm:text-lg text-left sm:text-center">
               <p>
-                I’m a <b>Backend Developer</b> passionate about building systems that don’t just work —
-                they scale, evolve, and stay maintainable for years.
+                I’m a <b>Backend Python Developer</b> focused on building scalable, reliable, and production-ready backend
+                systems. I enjoy turning complex requirements into clean, predictable architectures.
               </p>
 
               <p>
-                I specialize in <b>Python</b>, <b>FastAPI</b>, <b>Django</b>, <b>PostgreSQL</b>, <b>Docker</b>,
-                and designing backend architectures that feel clean, efficient, and predictable.
+                My core stack includes <b>Python</b>, <b>FastAPI</b>, <b>Django</b>, <b>PostgreSQL</b>, <b>Docker</b>, <b>Redis</b>,
+                and modern backend development tools. I’m experienced in designing APIs, working with async tasks, integrating CI/CD, and implementing real monitoring solutions.
               </p>
 
               <p>
-                What drives me most is the craft of transforming complex requirements into elegant,
-                production-ready solutions. I love creating services that are fast, secure, fault-tolerant,
-                and easy for teams to build on top of.
-              </p>
-
-              <p>
-                I combine engineering discipline with product-oriented thinking — focusing not only on
-                code quality, but also on real user value, technical clarity, and long-term stability.
-              </p>
-
-              <p>
-                Today, I’m actively leveling up toward a strong Middle Developer role: mastering architecture
-                patterns, writing testable modular code, and contributing to meaningful products that help
-                businesses grow.
+                I strive to build backends that are fast, secure, and thoughtfully engineered: modular codebases, clear boundaries, and solutions ready for production.
               </p>
 
               <p className="italic text-gray-500 dark:text-gray-400">
-                I don’t just write backend code — I build systems that stay strong and reliable as they grow.
+                I don’t just write backend code — I engineer systems designed to grow, adapt, and stay dependable.
               </p>
-
             </div>
           </motion.div>
 
-
           {/* Статистика */}
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto mb-12">
             {content.stats.map((stat: StatType) => (
               <motion.div
                 key={stat.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: stat.id * 0.1 }}
-                className="flex flex-col gap-y-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-gray-200/30 dark:border-gray-700/30 rounded-xl p-5 shadow-sm hover:shadow-md transition"
+                className="flex flex-col gap-y-1 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm border border-gray-200/10 dark:border-gray-700/10 rounded-xl p-4 sm:p-5 shadow-sm hover:shadow-md transition"
               >
-                <dd className="text-3xl font-bold bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+                <dd className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
                   {stat.value}
                 </dd>
-                <dt className="text-gray-600 dark:text-gray-400 text-sm">{stat.name}</dt>
+                <dt className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{stat.name}</dt>
               </motion.div>
             ))}
           </dl>
 
           {/* Кнопки */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <motion.a
               href="/contact"
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium shadow hover:shadow-lg transition"
+              className="px-5 sm:px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium shadow hover:shadow-lg transition text-sm sm:text-base"
             >
               Let’s connect
             </motion.a>
@@ -239,7 +216,7 @@ export default function AboutPage() {
               href="/resumes/Akrom Rustamov.pdf"
               download
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-300 hover:bg-gray-100/20 dark:hover:bg-gray-800/40 transition"
+              className="px-5 sm:px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 bg-transparent text-gray-800 dark:text-gray-300 hover:bg-gray-100/10 dark:hover:bg-gray-800/20 transition text-sm sm:text-base"
             >
               Download CV
             </motion.a>

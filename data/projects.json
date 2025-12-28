@@ -57,6 +57,92 @@
     ]
   },
   {
+  "title": "Autonomous Browser AI Agent",
+  "description": "An autonomous AI agent that interacts with a web browser to execute complex multi-step tasks using AI-driven decisions and browser automation.",
+  "longDescription": "Autonomous Browser AI Agent is an intelligent automation system built in Python that enables fully autonomous browser interactions. Instead of relying on hardcoded scripts or fixed navigation paths, the agent observes page elements and decides actions dynamically to complete tasks like session management, form interactions, navigating links, data extraction, and even workflow automation such as email handling, food ordering, and job applications. The agent supports persistent Chrome profiles to preserve sessions across runs and features a confidence-based authorization check with interactive login support.",
+  "image": "/projects/project_9/banner.webp",
+  "slug": "autonomous-browser-ai-agent",
+  "github": "https://github.com/RustamovAkrom/AutomationBrowser",
+  "deploy": null,
+  "date": "2025-10-10",
+  "technologies": [
+    "Python",
+    "Browser Automation",
+    "Chrome DevTools Protocol",
+    "AI Agent Logic",
+    "LLM Integration",
+    "Session Persistence",
+    "Modular Architecture",
+    "Env Configuration"
+  ],
+  "useCases": [
+    {
+      "title": "Mail Handling",
+      "description": "Read the latest emails and remove spam messages automatically."
+    },
+    {
+      "title": "Food Ordering",
+      "description": "Place an order for food items (e.g., BBQ burgers and fries) based on user’s history."
+    },
+    {
+      "title": "Job Application Automation",
+      "description": "Search for relevant job listings on a site like hh.ru and apply with a cover letter."
+    }
+  ],
+  "features": [
+    "Autonomous decision-making without hardcoded URLs or selectors",
+    "Persistent Chrome profile to maintain logged-in sessions",
+    "Interactive login flow when required",
+    "Authorization confidence scoring (0.0–1.0)",
+    "Extendable with custom sub-agents and skills"
+  ],
+  "howItWorks": "The agent evaluates the visible elements on a page to determine actions dynamically. It checks a confidence score to determine if the user is logged in and, based on thresholds, either continues with automation or prompts for login. The modular skill system allows adding new capabilities easily.",
+  "installationSteps": [
+    "Clone the repository and enter its directory.",
+    "Create a Python virtual environment and install dependencies from requirements.txt.",
+    "Install Google Chrome if not already installed.",
+    "Configure paths and settings in config/settings.py for Chrome path, profile, and timeouts."
+  ],
+  "runInstructions": "Execute `python main.py` in the terminal. After start, enter a natural language task (e.g., 'Read last 5 emails and delete spam'). The browser opens and execution begins. If login is needed, the agent pauses and waits for manual authentication.",
+  "license": "MIT License"
+},
+  {
+    "title": "Marketplace — Modern E-commerce Backend Platform",
+    "description": "A high-performance, scalable e-commerce backend built with FastAPI, featuring clean architecture, JWT authentication, role-based access control, and modular domain design.",
+    "longDescription": "Marketplace is a production-ready backend platform for a modern online marketplace, developed using FastAPI and clean architecture principles. The system covers all essential e-commerce features, including user authentication, product catalog management, shopping carts, orders, delivery logistics, image uploads, and role-based permissions.\n\nThe platform supports multiple user roles — Buyer, Seller, Courier, and Admin — each with strictly defined access rights. Authentication is implemented using secure JWT-based access and refresh tokens, with token revocation support for logout and session control. Passwords are hashed using bcrypt, and all API input/output data is validated using Pydantic.\n\nThe project follows an async-first design using asyncpg and aiofiles, ensuring high performance and scalability. Its modular structure allows each domain (users, products, orders, delivery, etc.) to be easily maintained, extended, or separated into independent microservices in the future.\n\nMarketplace is designed as a real-world backend solution suitable for production use and as a strong portfolio project demonstrating backend engineering best practices.",
+    "image": "/projects/project_8/banner.webp",
+    "slug": "marketplace-fastapi-backend",
+    "github": "https://github.com/RustamovAkrom/Marketplace-FastAPI",
+    "deploy": null,
+    "date": "2025-09-02",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy 2.0",
+      "Alembic",
+      "asyncpg",
+      "JWT",
+      "OAuth2",
+      "Pydantic",
+      "bcrypt",
+      "aiofiles",
+      "Redis",
+      "Pytest",
+      "GitHub Actions"
+    ],
+    "screenshots": [
+      {
+        "src": "/projects/project_8/architecture.webp",
+        "alt": "Clean Architecture overview"
+      },
+      {
+        "src": "/projects/project_8/database_diagram.webp",
+        "alt": "Database schema diagram"
+      }
+    ]
+  },
+  {
     "title": "Blog Web App",
     "description": "Full-stack blog web application built with Django, and Bootstrap for the frontend, and other safety dependencies with PostgreSQL and Sqlite3 for the backend. Features include user authentication, CRUD operations for posts, and a responsive design.",
     "longDescription": "This project is a comprehensive full-stack blog web application developed using Django for the backend and Bootstrap for the frontend. The application is designed to provide a seamless user experience with features such as user authentication, allowing users to register, log in, and manage their profiles securely. It supports CRUD (Create, Read, Update, Delete) operations for blog posts, enabling users to create new posts, view existing ones, edit their content, and delete them as needed. The application is built with a responsive design using Bootstrap, ensuring it works well on various devices, from desktops to mobile phones. For data storage, the application utilizes PostgreSQL as the primary database and SQLite3 for development purposes. Additionally, the project incorporates several security-focused dependencies to enhance the safety and integrity of user data and interactions. Overall, this blog web application serves as a robust platform for users to share their thoughts and engage with content in a secure and user-friendly environment.",
