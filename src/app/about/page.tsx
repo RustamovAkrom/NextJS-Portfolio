@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, easeInOut } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { AboutContentType, TimelineItemType, LinkType, StatType } from "@/types/about";
+import type { AboutContentType, TimelineItemType, StatType } from "@/types/about";
 
 function MyJourneySection({
   timeline,
@@ -118,7 +118,7 @@ export default function AboutPage() {
           >
             <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">
               <span className="block text-gray-900 dark:text-white">
-                Hi, I'm Akrom Rustamov
+                Hi, I`m Akrom Rustamov
               </span>
               <span className="block text-gray-400">
                 Backend Engineer
