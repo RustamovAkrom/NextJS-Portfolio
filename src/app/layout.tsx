@@ -52,13 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <BackgroundAnimation
             config={{
-    numStars: 150,
     speed: 0.2,
-    darkGradient: ["#050510", "#1a1a3a"],
-    lightGradient: ["#eef7ff", "#dbeafe"],
   }}
             >
-              <main className="container mx-auto px-4 py-8">{children}</main>
+              <main className="">{children}</main>
             </BackgroundAnimation>
             <Footer />
           </Loader>
