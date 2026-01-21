@@ -5,7 +5,7 @@ import { Code, Database, Palette, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { SkillType, ProgressSkillType, SkillsDataType } from "@/types/skills";
 
-const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+const iconMap: Record<string, React.ComponentType<any>> = {
   Database,
   Settings,
   Code,
@@ -13,35 +13,36 @@ const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>
 };
 
 /* ================================
-   Skill Card (same style, cleaner)
+   Skill Card
 ================================ */
 function SkillCard({ skill, index }: { skill: SkillType; index: number }) {
   const Icon = iconMap[skill.icon];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.6 }}
+      transition={{ delay: index * 0.08 }}
       className="
-        relative rounded-2xl p-6
-        border border-indigo-500/10 dark:border-indigo-400/10
-        bg-gradient-to-br from-white/60 to-indigo-50/20
-        dark:from-indigo-950/60 dark:to-indigo-900/20
+        group relative rounded-2xl p-6
+        border border-gray-200 dark:border-indigo-500/10
+        bg-white/80 dark:bg-indigo-950/60
         backdrop-blur-xl
-        shadow-sm hover:shadow-lg hover:-translate-y-1
+        shadow-md hover:shadow-xl hover:-translate-y-1
         transition-all
       "
     >
-      {/* soft glow */}
-      <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 blur-2xl opacity-30" />
+      {/* Glow */}
+      <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-40 blur-2xl transition" />
 
       <div className="relative z-10 text-center">
         {Icon && (
-          <div className="mx-auto mb-4 w-fit rounded-xl p-3
-                          bg-gradient-to-r from-indigo-500 to-purple-600
-                          shadow-md">
+          <div
+            className="mx-auto mb-4 w-fit rounded-xl p-3
+                       bg-gradient-to-r from-indigo-500 to-purple-600
+                       shadow-md"
+          >
             <Icon className="w-7 h-7 text-white" />
           </div>
         )}
@@ -56,9 +57,9 @@ function SkillCard({ skill, index }: { skill: SkillType; index: number }) {
               key={j}
               className="
                 px-3 py-1 rounded-full text-xs sm:text-sm
-                bg-white/70 dark:bg-indigo-900/60
+                bg-gray-100 dark:bg-indigo-900/50
                 text-gray-700 dark:text-indigo-200
-                border border-indigo-500/10
+                border border-gray-200 dark:border-indigo-500/10
               "
             >
               {item}
@@ -71,12 +72,12 @@ function SkillCard({ skill, index }: { skill: SkillType; index: number }) {
 }
 
 /* ================================
-   Progress Bar (same logic, softer)
+   Progress Bar
 ================================ */
 function ProgressBar({ skill, index }: { skill: ProgressSkillType; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
@@ -84,18 +85,15 @@ function ProgressBar({ skill, index }: { skill: ProgressSkillType; index: number
     >
       <div className="flex justify-between text-sm font-medium">
         <span className="text-gray-800 dark:text-gray-200">{skill.name}</span>
-        <span className="text-indigo-400">{skill.level}%</span>
+        <span className="text-indigo-500">{skill.level}%</span>
       </div>
 
-      <div className="h-3 rounded-full bg-indigo-200/40 dark:bg-indigo-900/60 overflow-hidden">
+      <div className="h-3 rounded-full bg-gray-200 dark:bg-indigo-900/60 overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${skill.level}%` }}
-          transition={{ duration: 1, delay: index * 0.1 }}
-          className="
-            h-full rounded-full
-            bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-600
-          "
+          transition={{ duration: 1 }}
+          className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-600"
         />
       </div>
     </motion.div>
@@ -110,13 +108,17 @@ export default function Skills() {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    fetch("/api/skills")
+    fetch("/api/skills", { cache: "no-store" })
       .then((res) => res.json())
       .then((json) => setData(json[0]));
   }, []);
 
   if (!data) {
-    return <p className="text-center py-24 text-gray-500">Loading...</p>;
+    return (
+      <p className="text-center py-24 text-gray-500 dark:text-gray-400">
+        Loading...
+      </p>
+    );
   }
 
   const visible = showAll
@@ -124,54 +126,49 @@ export default function Skills() {
     : data.progressSkills.slice(0, 6);
 
   return (
-    <div className="relative mt-20 overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden mt-20">
 
-      {/* ===== background (restored) ===== */}
-      <div className="absolute inset-0 -z-10
-        bg-gradient-to-b
-        from-indigo-950 via-indigo-900/40 to-indigo-950
-        dark:from-black dark:via-indigo-950/50 dark:to-black
-      " />
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-transparent to-gray-50 dark:from-black dark:via-indigo-950/40 dark:to-black" />
 
-      {/* ===== header ===== */}
-      <section className="py-24 text-center px-6">
-        <motion.h1
+      {/* Header */}
+      <section className="py-20 text-center px-4">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="
-            text-4xl sm:text-5xl font-extrabold
-            bg-gradient-to-r from-indigo-400 to-purple-400
-            bg-clip-text text-transparent
-          "
+          className="space-y-4"
         >
-          Skills
-        </motion.h1>
+          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+              Skills
+            </span>
+          </h1>
 
-        <p className="mt-4 max-w-xl mx-auto text-indigo-200/80 text-base sm:text-lg">
-          Tools and technologies I use to build scalable backend systems.
-        </p>
+          <p className="max-w-xl mx-auto text-gray-600 dark:text-gray-400">
+            Tools and technologies I use to build scalable backend systems.
+          </p>
+        </motion.div>
       </section>
 
-      {/* ===== cards ===== */}
-      <section className="max-w-6xl mx-auto px-6 grid
-                          grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-24">
+      {/* Cards */}
+      <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-24">
         {data.skills.map((skill, i) => (
           <SkillCard key={i} skill={skill} index={i} />
         ))}
       </section>
 
-      {/* ===== progress ===== */}
-      <section className="relative py-28 bg-indigo-950/40 backdrop-blur-xl">
-        <div className="max-w-4xl mx-auto px-6">
+      {/* Progress */}
+      <section className="py-24 bg-gray-100/70 dark:bg-indigo-950/40 backdrop-blur-xl">
+        <div className="max-w-4xl mx-auto px-4">
 
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-bold text-center
-                       bg-gradient-to-r from-indigo-300 to-purple-300
-                       bg-clip-text text-transparent mb-14"
+            className="text-4xl font-bold text-center mb-14
+                       bg-gradient-to-r from-indigo-500 to-purple-500
+                       bg-clip-text text-transparent"
           >
             Mastery Level
           </motion.h2>
@@ -188,10 +185,9 @@ export default function Skills() {
                 onClick={() => setShowAll(!showAll)}
                 className="
                   px-6 py-2.5 rounded-full
-                  bg-indigo-500/20 hover:bg-indigo-500/30
-                  text-indigo-200
-                  border border-indigo-400/20
-                  backdrop-blur
+                  bg-indigo-500/10 hover:bg-indigo-500/20
+                  text-indigo-600 dark:text-indigo-300
+                  border border-indigo-500/20
                   transition
                 "
               >
@@ -199,8 +195,9 @@ export default function Skills() {
               </button>
             </div>
           )}
+
         </div>
       </section>
-    </div>
+    </main>
   );
 }
