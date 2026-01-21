@@ -5,7 +5,7 @@ import { Code, Database, Palette, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { SkillType, ProgressSkillType, SkillsDataType } from "@/types/skills";
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Database,
   Settings,
   Code,
