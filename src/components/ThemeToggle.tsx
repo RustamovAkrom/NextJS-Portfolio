@@ -17,38 +17,40 @@ export default function ThemeToggle() {
   };
 
   return (
-    <motion.button
+    <button
       onClick={toggleTheme}
-      whileHover={{ scale: 1.1, rotate: 10 }}
-      whileTap={{ scale: 0.9, rotate: -10 }}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="p-3 rounded-full bg-gray-200 dark:bg-gray-800 shadow-lg flex items-center justify-center cursor-pointer"
+      className="
+        p-2 rounded-md
+        border border-gray-200 dark:border-gray-800
+        hover:bg-gray-100 dark:hover:bg-gray-900
+        transition
+        flex items-center justify-center
+      "
+      aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait" initial={false}>
         {theme === "light" ? (
           <motion.div
             key="sun"
-            initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <Sun className="w-6 h-6 text-yellow-400" />
+            <Sun className="w-4 h-4 text-gray-700" />
           </motion.div>
         ) : (
           <motion.div
             key="moon"
-            initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <Moon className="w-6 h-6 text-gray-100" />
+            <Moon className="w-4 h-4 text-gray-300" />
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.button>
+    </button>
   );
 }

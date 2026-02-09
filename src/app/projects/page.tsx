@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
 import type { ProjectType } from "@/types/projects";
@@ -27,161 +27,152 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  const years = Array.from(new Set(projects.map((p) => p.date.slice(0, 4)))).sort(
-    (a, b) => Number(b) - Number(a)
-  );
+  const years = Array.from(
+    new Set(projects.map((p) => p.date.slice(0, 4)))
+  ).sort((a, b) => Number(b) - Number(a));
+
   const filteredProjects =
     filterYear === "all"
       ? projects
       : projects.filter((p) => p.date.startsWith(filterYear));
 
   return (
-    <main className="relative min-h-screen overflow-hidden mt-20">
-      {/* Background Glow */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 via-transparent to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-black" />
-      <motion.div
-        className="absolute inset-0 -z-10"
-        style={{ background: "radial-gradient(circle at 50% 20%, rgba(79,70,229,0.15), transparent 70%)" }}
-      />
-
-      {/* Header Section */}
-      <section className="py-20 lg:py-28 text-center px-4 sm:px-6 lg:px-8 relative">
+    <main className="min-h-screen bg-white dark:bg-black px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <section className="max-w-6xl mx-auto py-20 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="space-y-4"
         >
-          <div className="inline-flex items-center px-4 py-1 rounded-full bg-indigo-100/60 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-sm font-medium shadow-sm">
-            ✨ My Work
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-              Creative Projects
-            </span>
+          <h1 className="text-4xl sm:text-5xl font-semibold text-gray-900 dark:text-white">
+            Projects
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
-            A showcase of my best web applications — where design meets performance and creativity.
+
+          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+            Selected backend systems, APIs and engineering-focused applications.
           </p>
         </motion.div>
       </section>
 
-      {/* Filter Buttons */}
-      <div className="max-w-4xl mx-auto px-4 mb-12 flex flex-wrap justify-center gap-3">
+      {/* Filters */}
+      <div className="max-w-4xl mx-auto mb-12 flex flex-wrap justify-center gap-3">
         {["all", ...years].map((year) => (
-          <motion.button
+          <button
             key={year}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-            className={`px-5 py-1.5 rounded-full text-sm font-medium transition-all ${
-              filterYear === year
-                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40"
-            }`}
             onClick={() => setFilterYear(year)}
+            className={`px-4 py-1.5 text-sm rounded-md border transition ${
+              filterYear === year
+                ? "bg-gray-900 text-white dark:bg-white dark:text-black"
+                : "border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900"
+            }`}
           >
-            {year === "all" ? "All Projects" : year}
-          </motion.button>
+            {year === "all" ? "All" : year}
+          </button>
         ))}
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 pb-28">
-        <AnimatePresence>
-          {loading
-            ? Array.from({ length: 6 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="h-72 rounded-xl bg-gray-200 dark:bg-gray-800 animate-pulse"
-                />
-              ))
-            : filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="group relative flex flex-col rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  {/* Image */}
-                  <div className="relative w-full h-48 overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      priority={idx === 0}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
-                  </div>
+      {/* Projects grid */}
+      <section className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-24">
+        {loading
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-72 rounded-xl bg-gray-200 dark:bg-gray-800 animate-pulse"
+              />
+            ))
+          : filteredProjects.map((project, idx) => (
+              <motion.div
+                key={project.slug}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden bg-white dark:bg-black"
+              >
+                {/* Image */}
+                <div className="relative w-full h-44">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={idx === 0}
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 p-5 relative z-10">
-                    <h2 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
-                      {project.title}
-                    </h2>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 group-hover:line-clamp-4 transition-all duration-300 mb-3">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.technologies?.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-indigo-100/60 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-auto flex gap-2">
-                      <Link
-                        href={`projects/${project.slug}`}
-                        className="flex-1 text-center py-2 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-medium hover:opacity-90 transition"
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-5">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {project.title}
+                  </h2>
+
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* Tech */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies?.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded-md border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400"
                       >
-                        Details
-                      </Link>
-                      {project.github && (
-                        <Link
-                          href={project.github}
-                          target="_blank"
-                          className="p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                        >
-                          <Github className="w-4 h-4" />
-                        </Link>
-                      )}
-                      {project.deploy && (
-                        <Link
-                          href={project.deploy}
-                          target="_blank"
-                          className="p-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </Link>
-                      )}
-                    </div>
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-        </AnimatePresence>
-      </div>
 
-      {/* Mention Section */}
-      <div className="max-w-4xl mx-auto px-4 pb-20 text-center">
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent mb-6" />
-        <p className="text-gray-500 dark:text-gray-400 text-sm">
-          💡 All projects are open-source on{" "}
+                  {/* Actions */}
+                  <div className="mt-auto flex gap-2">
+                    <Link
+                      href={`projects/${project.slug}`}
+                      className="flex-1 text-center py-2 rounded-md border border-gray-300 dark:border-gray-700 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+                    >
+                      Details
+                    </Link>
+
+                    {project.github && (
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        className="p-2 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+                      >
+                        <Github className="w-4 h-4" />
+                      </Link>
+                    )}
+
+                    {project.deploy && (
+                      <Link
+                        href={project.deploy}
+                        target="_blank"
+                        className="p-2 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+      </section>
+
+      {/* Footer note */}
+      <section className="max-w-3xl mx-auto pb-20 text-center">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          All projects are open-source and available on{" "}
           <Link
             href="https://github.com/rustamovakrom"
             target="_blank"
-            className="text-indigo-500 dark:text-indigo-400 hover:underline"
+            className="underline hover:text-gray-900 dark:hover:text-white"
           >
             GitHub
           </Link>
-          . Feel free to explore, contribute, or collaborate!
+          .
         </p>
-      </div>
+      </section>
     </main>
   );
 }

@@ -11,6 +11,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Skills", href: "/skills" },
+    { label: "Certificates", href: "/certificates" },
     { label: "Portfolio", href: "/projects" },
     { label: "Services", href: "/services" },
     { label: "Blog ->", href: "https://akromblogdev.vercel.app" },

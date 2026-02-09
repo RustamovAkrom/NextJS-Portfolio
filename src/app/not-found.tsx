@@ -1,36 +1,45 @@
-// app/not-found.tsx
-"use client"; // если есть интерактивность на клиенте
+"use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <main className="grid min-h-full place-items-center bg-transform px-6 py-24 sm:py-32 lg:px-8">
-        <div className="text-center">
-          <p className="text-base font-semibold black:text-indigo-400">404</p>
-          <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance black:text-white sm:text-7xl">
-            Page not found
-          </h1>
-          <p className="mt-6 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-            Sorry, we couldn’t find the page you’re looking for.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <Link
-                    href="/"
-                    className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold black:text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                    Go back home
-                </Link>
-                  <Link
-                    href="/contact"
-                    className="text-sm font-semibold black:text-white"
-                >
-                    Contact support <span aria-hidden="true">&rarr;</span>
-                </Link>
-          </div>
+    <main className="min-h-screen bg-white dark:bg-black flex items-center justify-center px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="text-center max-w-lg"
+      >
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+          404
+        </p>
+
+        <h1 className="text-4xl sm:text-5xl font-semibold text-gray-900 dark:text-white">
+          Page not found
+        </h1>
+
+        <p className="mt-4 text-gray-600 dark:text-gray-400">
+          The page you’re looking for doesn’t exist or has been moved.
+        </p>
+
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <Link
+            href="/"
+            className="px-5 py-2 rounded-md bg-gray-900 text-white dark:bg-white dark:text-black text-sm font-medium hover:opacity-90 transition"
+          >
+            Go home
+          </Link>
+
+          <Link
+            href="/contact"
+            className="px-5 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+          >
+            Contact
+          </Link>
         </div>
-      </main>
-    </div>
+      </motion.div>
+    </main>
   );
 }
