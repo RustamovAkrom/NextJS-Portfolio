@@ -44,7 +44,7 @@
     ],
     "progressSkills": [
       { "name": "Python", "level": 100 },
-      { "name": "C++", "level": 40 },
+      { "name": "C++", "level": 90 },
       { "name": "Django ( DRF )", "level": 100 },
       { "name": "Docker", "level": 100 },
       { "name": "FastAPI", "level": 100 },
@@ -53,12 +53,12 @@
       { "name": "Redis", "level": 100 },
       { "name": "JWT", "level": 100 },
       { "name": "Celery (worker, beat, flower)", "level": 100 },
-      { "name": "Linux", "level": 80 },
+      { "name": "Linux", "level": 90 },
+      { "name": "NGINX", "level": 100 },
       { "name": "PostgreSQL", "level": 100 },
-      { "name": "Next.JS", "level": 80 },
-      { "name": "React.JS", "level": 80 },
-      { "name": "Tailwind CSS", "level": 70 },
-      { "name": "NGINX", "level": 100 }
+      { "name": "Next.JS", "level": 70 },
+      { "name": "React.JS", "level": 70 },
+      { "name": "Tailwind CSS", "level": 70 }
     ]
   }
 ]

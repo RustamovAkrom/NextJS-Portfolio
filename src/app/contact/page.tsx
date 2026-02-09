@@ -6,57 +6,53 @@ import { motion } from "framer-motion";
 import { contactCards, socialLinks } from "@/config/contact";
 import { iconMap } from "@/lib/iconMap";
 
-// ✅ Контактные карточки
+/* ================= CONTACT INFO ================= */
+
 function ContactInfoSection() {
   return (
-    <motion.div
-      className="space-y-8 relative z-10"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="space-y-4">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Contact Information
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+          Contact information
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-lg">
-          Feel free to reach out — I’m always open to new opportunities and creative ideas.
+
+        <p className="text-gray-600 dark:text-gray-400 max-w-md">
+          Open to backend roles, startup collaborations and AI projects.
         </p>
       </div>
 
       <div className="space-y-4">
-        {contactCards.map((card, idx) => {
+        {contactCards.map((card) => {
           const Icon = iconMap[card.icon];
+
           return (
-            <motion.div
+            <div
               key={card.title}
-              className="flex items-center gap-4 rounded-xl border border-gray-200/60 dark:border-gray-700/60 
-                         bg-gradient-to-tr from-white/70 to-indigo-50/40 dark:from-gray-800/70 dark:to-indigo-900/20 
-                         backdrop-blur-md p-5 shadow-sm hover:shadow-lg transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + idx * 0.1, duration: 0.6 }}
+              className="flex items-center gap-4 border border-gray-200 dark:border-gray-800 rounded-xl p-5"
             >
-              <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg 
-                              bg-gradient-to-tr from-indigo-500 to-purple-500 text-white shadow-md">
-                <Icon className="w-6 h-6" />
+              <div className="p-2 rounded-md border border-gray-200 dark:border-gray-800">
+                <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
               </div>
+
               <div>
-                <h3 className="text-sm text-gray-500 dark:text-gray-400">{card.title}</h3>
-                <p className="font-semibold text-gray-900 dark:text-white">{card.value}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{card.desc}</p>
+                <h3 className="text-sm text-gray-500">{card.title}</h3>
+                <p className="font-medium text-gray-900 dark:text-white">
+                  {card.value}
+                </p>
+                <p className="text-sm text-gray-500">{card.desc}</p>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
-// ✅ Форма отправки сообщения
+/* ================= FORM ================= */
+
 function SendMessageForm() {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<string>("");
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -73,9 +69,10 @@ function SendMessageForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      setStatus("✅ Message sent successfully!");
+
+      setStatus("Message sent successfully.");
     } catch {
-      setStatus("❌ Something went wrong.");
+      setStatus("Something went wrong.");
     } finally {
       formRef.current?.reset();
       setTimeout(() => setStatus(""), 3000);
@@ -87,153 +84,120 @@ function SendMessageForm() {
     <motion.form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="relative mx-auto max-w-xl space-y-6 rounded-2xl p-8 shadow-lg 
-                 bg-gradient-to-br from-white/80 to-indigo-50/60 dark:from-gray-900/80 dark:to-gray-800/70 
-                 backdrop-blur-md border border-gray-200/40 dark:border-gray-700/40"
+      className="border border-gray-200 dark:border-gray-800 rounded-xl p-8 space-y-6"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.7 }}
     >
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center">
-        Send Me a Message
+      <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+        Send a message
       </h2>
-      <p className="text-center text-gray-600 dark:text-gray-400">
-        I’d love to hear from you. Just fill out the form below.
+
+      <p className="text-gray-600 dark:text-gray-400">
+        Tell me about your project or opportunity.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           name="first-name"
           placeholder="First name"
           required
-          className="rounded-lg border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 
-                     px-4 py-2 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-black"
         />
         <input
           name="last-name"
           placeholder="Last name"
           required
-          className="rounded-lg border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 
-                     px-4 py-2 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
+          className="rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-black"
         />
       </div>
 
       <input
         name="email"
         type="email"
-        placeholder="example@gmail.com"
+        placeholder="Email"
         required
-        className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 
-                   px-4 py-2 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
+        className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-black"
       />
 
       <input
         name="phone"
-        type="text"
-        placeholder="+998 (01) 234-56-78"
-        className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 
-                   px-4 py-2 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
+        placeholder="Phone"
+        className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-black"
       />
 
       <textarea
         name="message"
         rows={4}
-        placeholder="Write your message..."
+        placeholder="Message"
         required
-        className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 
-                   px-4 py-2 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
+        className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 bg-white dark:bg-black"
       />
 
       <button
         type="submit"
-        className="w-full rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 
-                   px-4 py-3 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] 
-                   transition-transform duration-300"
+        className="w-full py-3 rounded-md bg-gray-900 text-white dark:bg-white dark:text-black font-medium hover:opacity-90 transition"
       >
-        Send Message
+        Send message
       </button>
 
-      {status && <p className="text-center text-sm mt-2 text-gray-600 dark:text-gray-300">{status}</p>}
+      {status && (
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+          {status}
+        </p>
+      )}
     </motion.form>
   );
 }
 
-// ✅ Главная страница
+/* ================= PAGE ================= */
+
 export default function ContactPage() {
   return (
-    <section className="relative overflow-hidden py-20 mt-20">
-      {/* 🔹 Фон */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-indigo-100 
-                      dark:from-gray-900 dark:via-gray-950 dark:to-gray-900" />
-      <div className="absolute -top-20 left-1/2 w-[600px] h-[600px] bg-indigo-500/20 dark:bg-indigo-700/20 
-                      rounded-full blur-3xl -translate-x-1/2" />
-
-      <motion.div
-        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Заголовок */}
-        <div className="text-center mb-16">
-          <motion.div
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-indigo-100/60 dark:bg-indigo-900/30 
-                       text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-5"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            ✨ Get In Touch
-          </motion.div>
-
-          <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 
-                         bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
-                         bg-clip-text text-transparent">
-            Let’s Build Something Amazing
+    <main className="min-h-screen bg-white dark:bg-black px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <section className="max-w-6xl mx-auto py-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-4"
+        >
+          <h1 className="text-4xl sm:text-5xl font-semibold text-gray-900 dark:text-white">
+            Contact
           </h1>
 
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Ready to bring your ideas to life? Let’s connect and make it happen.
+          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+            Available for backend roles, AI projects and startup collaborations.
           </p>
-        </div>
+        </motion.div>
+      </section>
 
-        {/* Контент */}
-        <div className="grid lg:grid-cols-2 gap-16 relative z-10">
-          <ContactInfoSection />
-          <SendMessageForm />
-        </div>
+      {/* Content */}
+      <section className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 pb-24">
+        <ContactInfoSection />
+        <SendMessageForm />
+      </section>
 
-        {/* 🌐 Социальные ссылки */}
-        <div className="mt-20 text-center space-y-4 relative z-10">
-          <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400 tracking-wide">
-            Follow Me
-          </h3>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            {socialLinks.map((link, idx) => {
-              const Icon = iconMap[link.icon];
-              return (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center justify-center h-11 w-11 rounded-full 
-                             border border-indigo-200/20 dark:border-indigo-700/40 bg-white/50 dark:bg-gray-800/60 
-                             shadow-sm hover:border-indigo-400/40 transition-all duration-300"
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + idx * 0.08, duration: 0.25 }}
-                >
-                  <span className="absolute inset-0 rounded-full bg-indigo-500/10 blur-md opacity-0 
-                                   group-hover:opacity-100 transition-opacity duration-300" />
-                  <Icon className="relative z-10 h-5 w-5 text-gray-600 dark:text-gray-300 group-hover:text-indigo-400 transition-colors" />
-                  <span className="sr-only">{link.label}</span>
-                </motion.a>
-              );
-            })}
-          </div>
+      {/* Social */}
+      <section className="max-w-3xl mx-auto text-center pb-20">
+        <div className="flex justify-center gap-4">
+          {socialLinks.map((link) => {
+            const Icon = iconMap[link.icon];
+
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-md border border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+              >
+                <Icon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              </a>
+            );
+          })}
         </div>
-      </motion.div>
-    </section>
+      </section>
+    </main>
   );
 }
